@@ -1,0 +1,64 @@
+﻿@model Form17.Models.UploadECDataModel
+@{
+    ViewBag.Title = "UploadECData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="frmuploaddata">
+    <div class="row" style="padding-left:15px">
+        <div class="form-group col-md-3">
+            <label>Select Standard:</label><span style="color: red">*</span>
+            <select id="STD" name="STD" class="form-control">
+                <option value="0">--Select Standard--</option>
+                <option value="SSC">SSC</option>
+                <option value="HSC">HSC</option>
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label>Remove EC Data:</label><span style="color: red">*</span>
+            <br>
+            <input type="file" name="EC_Data" id="EC_Data" class="form-control" />
+        </div>
+        <div class="col-md-3 form-group" style="padding-top:22px">
+            <input type="button" name="btnSubmit" value="submit" id="btnSubmit" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSubmit").click(function (e) {
+            var formData = new FormData($(frmuploaddata)[0]);
+            $.ajax({
+                url: "../State/RemoveECData",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    $("#frmuploaddata :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frmuploaddata :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+                        Success_Alert(Data.Message);
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    //Error_Alert(Data.Message);
+                }
+            });           
+        });
+    });
+
+
+</script>

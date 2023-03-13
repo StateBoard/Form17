@@ -1,0 +1,143 @@
+﻿@model PagedList.IPagedList<Form17.Models.Tbl_SSC_Form17_Final>
+@{
+    ViewBag.Title = "SSCDivisionInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+<div>
+    <div style="overflow:scroll">
+        @using (Html.BeginForm())
+        {
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Search By :</label>
+                <select id="Search_By" name="Search_By" class="form-control">
+                    <option value="0">--Select Option--</option>
+                    <option value="application">Application No</option>
+                    <option value="name">Student Name</option>
+                    <option value="email">Email ID</option>
+                    <option value="mobile">Mobile No</option>
+                    <option value="index">Index No of College</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <label>Enter Text :</label>
+                @Html.Editor("Search_Data", ViewBag.FilterValue as string, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-sm-2" style="padding-top:28px">
+                <input type="submit" value="Find" />
+            </div>
+            <div class="col-sm-2" style="padding-top:28px">
+                <a href="../Division/ExportToSSCExcel" class="btn btn-primary">Click to Download SSC Excel</a>
+            </div>
+        </div>
+        }
+        <br />
+        <table id="report1" class="borderTable">
+            <tr>
+                <th>ID</th>
+                <th>S_ID</th>
+                <th>Ref_ID</th>
+                <th>Last_Name</th>
+                <th>First_Name</th>
+                <th>Father_Husband_Name</th>
+                <th>Mother_Name</th>
+                <th>Gender</th>
+                <th>Residential_Address</th>
+                <th>Pincode</th>
+                <th>District</th>
+                <th>Taluka</th>
+                <th>State</th>
+                <th>Aadhar_No</th>
+                <th>Mobile_No</th>
+                <th>Email_ID</th>
+                <th>DOB</th>
+                <th>Village_of_Birth</th>
+                <th>Taluka_of_Birth</th>
+                <th>District_of_Birth</th>
+                <th>Name_of_Secondary_School</th>
+                <th>Secondary_School_Village</th>
+                <th>Secondary_School_Taluka</th>
+                <th>Secondary_School_District</th>
+                <th>Secondary_School_State</th>
+                <th>Secondary_School_Udise_No</th>
+                <th>Secondary_School_Pincode</th>
+                <th>Whether_Handicap</th>
+                <th>Handicap_Category</th>
+                <th>Date_of_Leaving_Secondary_School</th>
+                <th>Last_Studied_Standard</th>
+                <th>Status_of_Last_Studied_Standard</th>
+                <th>Division</th>
+                <th>District_of_Form_Submission</th>
+                <th>Taluka_of_Form_Submission</th>
+                <th>Medium_of_Form</th>
+                <th>School_of_Form_Submission</th>
+                <th>Index_No_of_School</th>
+                <th>Declaration_Yes_No</th>
+                <th>Name_of_Debarred_Board</th>
+                <th>Exam_of_Debar</th>
+                <th>Debarred_From_Year</th>
+                <th>Debarred_To_Year</th>
+                <th>Leaving_Certificate_Yes_No</th>
+                <th>Duplicate_Leaving_Certificate_Yes_No</th>
+                <th>Unique_ID_Payment</th>
+                <th>Selected_Language</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => item.ID)</td>
+                    <td>@Html.DisplayFor(model => item.S_ID)</td>
+                    <td>@Html.DisplayFor(model => item.Ref_ID)</td>
+                    <td>@Html.DisplayFor(model => item.Last_Name)</td>
+                    <td>@Html.DisplayFor(model => item.First_Name)</td>
+                    <td>@Html.DisplayFor(model => item.Father_Husband_Name)</td>
+                    <td>@Html.DisplayFor(model => item.Mother_Name)</td>
+                    <td>@Html.DisplayFor(model => item.Gender)</td>
+                    <td>@Html.DisplayFor(model => item.Residential_Address)</td>
+                    <td>@Html.DisplayFor(model => item.Pincode)</td>
+                    <td>@Html.DisplayFor(model => item.District)</td>
+                    <td>@Html.DisplayFor(model => item.Taluka)</td>
+                    <td>@Html.DisplayFor(model => item.State)</td>
+                    <td>@Html.DisplayFor(model => item.Aadhar_No)</td>
+                    <td>@Html.DisplayFor(model => item.Mobile_No)</td>
+                    <td>@Html.DisplayFor(model => item.Email_ID)</td>
+                    <td>@Html.DisplayFor(model => item.DOB)</td>
+                    <td>@Html.DisplayFor(model => item.Village_of_Birth)</td>
+                    <td>@Html.DisplayFor(model => item.Taluka_of_Birth)</td>
+                    <td>@Html.DisplayFor(model => item.District_of_Birth)</td>
+                    <td>@Html.DisplayFor(model => item.Name_of_Secondary_School)</td>
+                    <td>@Html.DisplayFor(model => item.Secondary_School_Village)</td>
+                    <td>@Html.DisplayFor(model => item.Secondary_School_Taluka)</td>
+                    <td>@Html.DisplayFor(model => item.Secondary_School_District)</td>
+                    <td>@Html.DisplayFor(model => item.Secondary_School_State)</td>
+                    <td>@Html.DisplayFor(model => item.Secondary_School_Udise_No)</td>
+                    <td>@Html.DisplayFor(model => item.Secondary_School_Pincode)</td>
+                    <td>@Html.DisplayFor(model => item.Whether_Handicap)</td>
+                    <td>@Html.DisplayFor(model => item.Handicap_Category)</td>
+                    <td>@Html.DisplayFor(model => item.Date_of_Leaving_Secondary_School)</td>
+                    <td>@Html.DisplayFor(model => item.Last_Studied_Standard)</td>
+                    <td>@Html.DisplayFor(model => item.Status_of_Last_Studied_Standard)</td>
+                    <td>@Html.DisplayFor(model => item.Division)</td>
+                    <td>@Html.DisplayFor(model => item.District_of_Form_Submission)</td>
+                    <td>@Html.DisplayFor(model => item.Taluka_of_Form_Submission)</td>
+                    <td>@Html.DisplayFor(model => item.Medium_of_Form)</td>
+                    <td>@Html.DisplayFor(model => item.School_of_Form_Submission)</td>
+                    <td>@Html.DisplayFor(model => item.Index_No_of_School)</td>
+                    <td>@Html.DisplayFor(model => item.Declaration_Yes_No)</td>
+                    <td>@Html.DisplayFor(model => item.Name_of_Debarred_Board)</td>
+                    <td>@Html.DisplayFor(model => item.Exam_of_Debar)</td>
+                    <td>@Html.DisplayFor(model => item.Debarred_From_Year)</td>
+                    <td>@Html.DisplayFor(model => item.Debarred_To_Year)</td>
+                    <td>@Html.DisplayFor(model => item.Leaving_Certificate_Yes_No)</td>
+                    <td>@Html.DisplayFor(model => item.Duplicate_Leaving_Certificate_Yes_No)</td>
+                    <td>@Html.DisplayFor(model => item.Unique_ID_Payment)</td>
+                    <td>@Html.DisplayFor(model => item.Selected_Language)</td>
+                </tr>
+            }
+        </table>
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount @Html.PagedListPager(Model, Page_No => Url.Action("HSCDivisionInfo", new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+    </div>
+</div>
+

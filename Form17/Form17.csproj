@@ -1,0 +1,477 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{305F93F3-944D-42AA-84C9-BE1DD568BF74}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Form17</RootNamespace>
+    <AssemblyName>Form17</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44374</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CSVLibraryAK, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\CSVLibraryAK.1.0.0\lib\net471\CSVLibraryAK.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Core, Version=1.5.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Core.1.5.4\lib\net46\EPPlus.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.8\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Design\images\check.png" />
+    <Content Include="Design\images\failure.png" />
+    <Content Include="Design\images\loader.gif" />
+    <Content Include="Design\images\loader1.gif" />
+    <Content Include="Design\images\MSBSHSE-LOGO.png" />
+    <Content Include="Design\images\nag.jpeg" />
+    <Content Include="Design\images\Passport.jpeg" />
+    <Content Include="Design\images\success.png" />
+    <Content Include="Design\JQUERY.js" />
+    <Content Include="Design\JS\DateFormat.js" />
+    <Content Include="Design\layout\index.html" />
+    <Content Include="Design\layout\scripts\index.html" />
+    <None Include="Design\layout\scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Design\layout\scripts\jquery-3.4.1.js" />
+    <Content Include="Design\layout\scripts\jquery-3.4.1.min.js" />
+    <Content Include="Design\layout\scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Design\layout\scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Design\layout\scripts\jquery.fitvids.min.js" />
+    <Content Include="Design\layout\scripts\jquery.min.js" />
+    <Content Include="Design\layout\scripts\jquery.mobilemenu.js" />
+    <None Include="Design\layout\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Design\layout\scripts\jquery.validate.js" />
+    <Content Include="Design\layout\scripts\jquery.validate.min.js" />
+    <Content Include="Design\layout\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Design\layout\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\images\close%402x.png" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\images\close.png" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\images\index.html" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\images\loading%402x.gif" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\images\loading.gif" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\images\next%402x.png" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\images\next.png" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\images\prev%402x.png" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\images\prev.png" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\index.html" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\nivo-lightbox.min.css" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\nivo-lightbox.min.js" />
+    <Content Include="Design\layout\scripts\tabslet\index.html" />
+    <Content Include="Design\layout\scripts\tabslet\jquery.tabslet.min.js" />
+    <Content Include="Design\layout\styles\easyui\easyui.css" />
+    <Content Include="Design\layout\styles\easyui\images\pagination_icons.png" />
+    <Content Include="Design\layout\styles\fontawesome-4.2.0.min.css" />
+    <Content Include="Design\layout\styles\fonts\fontawesome-webfont.svg" />
+    <Content Include="Design\layout\styles\fonts\index.html" />
+    <Content Include="Design\layout\styles\framework.css" />
+    <Content Include="Design\layout\styles\index.html" />
+    <Content Include="Design\layout\styles\layout.css" />
+    <Content Include="Design\layout\styles\Print.css" />
+    <Content Include="Design\MultiSelect\jquery.multiselect.css" />
+    <Content Include="Design\MultiSelect\jquery.multiselect.js" />
+    <Content Include="Design\Project.css" />
+    <Content Include="Design\Project.js" />
+    <Content Include="Design\Sweetalert\sweetalert2.css" />
+    <Content Include="Design\Sweetalert\sweetalert2.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\check.png" />
+    <Content Include="Images\default.png" />
+    <Content Include="Images\failure.png" />
+    <Content Include="Images\loader.gif" />
+    <Content Include="Images\MSBSHSE-LOGO.png" />
+    <Content Include="Images\Passport.jpeg" />
+    <Content Include="Images\success.png" />
+    <Content Include="Models\Form17Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Form17Model.edmx</DependentUpon>
+      <LastGenOutput>Form17Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Form17Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Form17Model.edmx</DependentUpon>
+      <LastGenOutput>Form17Model.cs</LastGenOutput>
+    </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\Webservice_SMS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Division\ExportToHSCNotepad.cshtml" />
+    <Content Include="Views\State\RemoveECData.cshtml" />
+    <None Include="Web References\Webservice_SMS\webservice_sms.disco" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DivisionController.cs" />
+    <Compile Include="Controllers\EC_HSC_PDFController.cs" />
+    <Compile Include="Controllers\EC_SSC_PDFController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="Controllers\StateController.cs" />
+    <Compile Include="Controllers\ValidationController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\PDFMaker.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Common_HSC.cs" />
+    <Compile Include="Helper\Common_SSC.cs" />
+    <Compile Include="Helper\DataAccessLayer.cs" />
+    <Compile Include="Helper\DateConverter.cs" />
+    <Compile Include="Helper\EncryptionDecryption.cs" />
+    <Compile Include="Models\DownloadStateDataModel.cs" />
+    <Compile Include="Models\EC_HSC_ModelController.cs" />
+    <Compile Include="Models\Form17Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Form17Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Form17Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Form17Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Form17Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HSC_Form17_Model.cs" />
+    <Compile Include="Models\HSC_Success_View.cs" />
+    <Compile Include="Models\LayoutViewModel.cs" />
+    <Compile Include="Models\SiteUpdateModel.cs" />
+    <Compile Include="Models\SSC_Form17_Model.cs" />
+    <Compile Include="Models\SSC_Success_View.cs" />
+    <Compile Include="Models\Tbl_Center.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Center_Details.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Code_Master.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Colmst.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Division_Details.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HSC_Form17.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HSC_Form17_Final.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HSC_Payment.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_HSC_Payment_Error.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Login_Credentials.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_OTP.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Site_Status.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_SSC_Form17.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_SSC_Form17_Final.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_SSC_Payment.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_SSC_Payment_Error.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Unique_ID_Payment.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Update_Old_College.cs">
+      <DependentUpon>Form17Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UpdateSchoolByDivisionModel.cs" />
+    <Compile Include="Models\UploadECDataModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Webservice_SMS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Design\decl.pdf" />
+    <Content Include="Design\layout\scripts\nivo-lightbox\Nivo-Lightbox-master.zip" />
+    <Content Include="Design\layout\scripts\tabslet\Tabslet-master.zip" />
+    <Content Include="Design\layout\styles\fonts\fontawesome-webfont.eot" />
+    <Content Include="Design\layout\styles\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Design\layout\styles\fonts\fontawesome-webfont.woff" />
+    <Content Include="Design\layout\styles\fonts\FontAwesome.otf" />
+    <Content Include="Design\subjectteacher.pdf" />
+    <Content Include="Design\layout\scripts\jquery-3.4.1.min.map" />
+    <Content Include="Design\layout\scripts\jquery-3.4.1.slim.min.map" />
+    <EntityDeploy Include="Models\Form17Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Form17Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Form17Model.edmx.diagram">
+      <DependentUpon>Form17Model.edmx</DependentUpon>
+    </Content>
+    <Compile Include="Models\UpdateCollegeByDivisionModel.cs" />
+    <Compile Include="Models\ConvertToCSVModel.cs" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\HSCForm17.cshtml" />
+    <Content Include="Views\Home\SSCForm17.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Payment\SSC_Success.cshtml" />
+    <Content Include="Views\Payment\SSC_Failure.cshtml" />
+    <Content Include="Views\Shared\DeActive.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Home\RePrintApplication.cshtml" />
+    <Content Include="Views\Home\HSCEnrollmentCertificate.cshtml" />
+    <Content Include="Views\State\Login.cshtml" />
+    <Content Include="Views\State\StateView.cshtml" />
+    <Content Include="Views\Division\Login.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Division\DivisionInfo.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Payment\HSC_Failure.cshtml" />
+    <Content Include="Views\Payment\HSC_Success.cshtml" />
+    <Content Include="Views\Shared\Payment_Layout.cshtml" />
+    <Content Include="Views\Home\Init.cshtml" />
+    <Content Include="Views\Shared\InitLayout.cshtml" />
+    <Content Include="Views\Home\UpdateOldCollege.cshtml" />
+    <Content Include="Views\Home\Halt.cshtml" />
+    <Content Include="Views\Home\UpdateOldSchool.cshtml" />
+    <Content Include="Views\Division\HSCDivisionInfo.cshtml" />
+    <Content Include="Views\Division\SSCDivisionInfo.cshtml" />
+    <Content Include="Views\Division\ExportToSSCExcel.cshtml" />
+    <Content Include="Views\Division\ExportToHSCExcel.cshtml" />
+    <Content Include="Views\Division\EditHSCDetails.cshtml" />
+    <Content Include="Views\Division\EditSSCDetails.cshtml" />
+    <Content Include="Views\State\DownloadData.cshtml" />
+    <Content Include="Views\State\ExportToExcelStateLevel.cshtml" />
+    <Content Include="Views\State\UploadECData.cshtml" />
+    <Content Include="Views\Division\ExportToSSCNotepad.cshtml" />
+    <Content Include="Views\Home\SSCEnrollmentCertificate.cshtml" />
+    <Content Include="Views\Payment\HSC_Successffffffff.cshtml" />
+    <Content Include="Views\State\ExportToCSVStateLevel.cshtml" />
+    <Content Include="Views\Division\AllocateEC.cshtml" />
+    <None Include="Web References\Webservice_SMS\webservice_sms.wsdl" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AppFiles\CenterList\" />
+    <Folder Include="AppFiles\Images\HSC\" />
+    <Folder Include="AppFiles\Images\SSC\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Images\Uploaded\" />
+    <Folder Include="PDF\" />
+    <Folder Include="report\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://sms.mh-hsc.ac.in/webservice_sms.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Webservice_SMS\</RelPath>
+      <UpdateFromURL>http://sms.mh-hsc.ac.in/webservice_sms.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Form17_Webservice_SMS_WebService_sms</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57943</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44374/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

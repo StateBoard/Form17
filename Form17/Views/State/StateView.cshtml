@@ -1,0 +1,143 @@
+﻿@model Form17.Models.SiteUpdateModel
+@{
+    ViewBag.Title = "StateView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="Site_Update" style="padding-bottom:10px" method="post">
+    @Html.AntiForgeryToken()
+    <div class="container" style="border:2px solid; border-color:navy">
+        <div class="row">
+            <div class="form-group col-md-5 text-center" style="padding-top:15px">
+                <label for="Last_Name">(1) Import Center List(s) :</label>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Last_Name">Import HSC Center List :</label>
+                <input type="file" name="HSC_CenterList" id="HSC_CenterList" class="form-control" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Last_Name">Import SSC Center List :</label>
+                <input type="file" name="SSC_CenterList" id="SSC_CenterList" class="form-control" />
+            </div>
+        </div>
+        <div class="row" style="padding:15px 0px">
+            <div class="form-group col-md-5 text-center">
+                <label for="Last_Name">(2) Site's Status :</label>
+            </div>
+            <div class="form-group col-md-3">
+                @Html.RadioButtonFor(model => model.Active_Status, "1")
+                <label for="Active_Status">Active</label>
+            </div>
+            <div class="form-group col-md-3">
+                @Html.RadioButtonFor(model => model.Active_Status, "0")
+                <label for="Active_Status">Deactive</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-5 text-center" style="padding-top:15px">
+                <label for="Last_Name">(3) Set Dates :</label>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Late_Fee_Date">Late Fee Date</label>
+                <input type="text" class="form-control datepicker" name="Late_Fee_Date" id="Late_Fee_Date" readonly placeholder="dd/mm/yyyy" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Super_Late_Fee_Date">Super Late Fee Date</label>
+                <input type="text" class="form-control datepicker" name="Super_Late_Fee_Date" id="Super_Late_Fee_Date" readonly placeholder="dd/mm/yyyy" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-5" style="padding-left:15px; padding-top:10px">
+                <input type="submit" id="btnSubmit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div style="align-content:center">
+    <table id="status_summary" style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <th>
+                Active Status
+            </th>
+            <th>
+                Late Fee Date
+            </th>
+            <th>
+                Super Late Fee Date
+            </th>
+        </tr>
+        <tbody id="data">
+           <tr></tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        getUpdatedReport();
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            var formData = new FormData($(Site_Update)[0]);
+            $.ajax({
+                url: '/State/StateView',
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    $("#Site_Update :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#Site_Update :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+                        Success_Alert(Data.Message);                        
+                        getUpdatedReport();                                            
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    Error_Alert(Data.Message);
+                }
+            });
+        })        
+    });
+
+    function getUpdatedReport() {
+        $.ajax({
+            type: "GET",
+            url: 'getSummary',
+            datatype: 'json',
+            success: function (Data) {
+                $('#data tr ').remove();
+                console.log(Data.recentTable.Late_Fee_Date);
+                jsondate_to_normaldate(Data.recentTable.Late_Fee_Date);
+                jsondate_to_normaldate(Data.recentTable.Super_Late_Fee_Date);
+                var rows = "<tr>" +
+                    "<td >" + Data.recentTable.Active_Status + "</td>" +
+                    "<td >" + jsondate_to_normaldate(Data.recentTable.Late_Fee_Date) + "</td>" +
+                    "<td >" + jsondate_to_normaldate(Data.recentTable.Super_Late_Fee_Date) + "</td>" +                    
+                    +"</tr>";
+                $("#data ").append(rows);
+            },
+        });
+    }
+
+    function jsondate_to_normaldate(jsondate) {
+        var dateString = jsondate.substr(6);
+        var currentTime = new Date(parseInt(dateString));
+        var month = currentTime.getMonth() + 1;
+        var day = currentTime.getDate();
+        var year = currentTime.getFullYear();
+        var date = day + "/" + month + "/" + year;
+        return date;
+    }
+</script>
+

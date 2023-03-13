@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Form17Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tbl_Center">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Pin" Type="nvarchar" MaxLength="10" />
+    <Property Name="Div_Code" Type="nvarchar" MaxLength="5" />
+    <Property Name="Division_Name" Type="nvarchar(max)" />
+    <Property Name="STD" Type="int" />
+    <Property Name="Count" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Center_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="STD" Type="int" />
+    <Property Name="Stream" Type="nvarchar" MaxLength="200" />
+    <Property Name="Medium" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Tbl_Code_Master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="division_code" Type="nvarchar(max)" />
+    <Property Name="division_name" Type="nvarchar(max)" />
+    <Property Name="district_code" Type="nvarchar(max)" />
+    <Property Name="district_name" Type="nvarchar(max)" />
+    <Property Name="taluka_code" Type="nvarchar(max)" />
+    <Property Name="taluka_name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Colmst">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SCHNO" Type="nvarchar" MaxLength="255" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="DIV,C,1" Type="nvarchar" MaxLength="255" />
+    <Property Name="STREAM" Type="nvarchar" MaxLength="255" />
+    <Property Name="MEDIUM" Type="nvarchar" MaxLength="255" />
+    <Property Name="Count" Type="float" />
+    <Property Name="Active" Type="float" />
+  </EntityType>
+  <EntityType Name="Tbl_Division_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Division_Code" Type="nvarchar" MaxLength="5" />
+    <Property Name="Division_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile_No" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tbl_HSC_Form17">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Last_Name" Type="nvarchar(max)" />
+    <Property Name="First_Name" Type="nvarchar(max)" />
+    <Property Name="Father_Husband_Name" Type="nvarchar(max)" />
+    <Property Name="Mother_Name" Type="nvarchar(max)" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="Residential_Address" Type="nvarchar(max)" />
+    <Property Name="Pincode" Type="nvarchar" MaxLength="6" />
+    <Property Name="District" Type="nvarchar" MaxLength="2" />
+    <Property Name="Taluka" Type="nvarchar" MaxLength="2" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Aadhar_No" Type="nvarchar" MaxLength="12" />
+    <Property Name="Mobile_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Email_ID" Type="nvarchar(max)" />
+    <Property Name="DOB" Type="nvarchar(max)" />
+    <Property Name="Village_of_Birth" Type="nvarchar(max)" />
+    <Property Name="Taluka_of_Birth" Type="nvarchar(max)" />
+    <Property Name="District_of_Birth" Type="nvarchar(max)" />
+    <Property Name="SSC_Passing_Month" Type="nvarchar" MaxLength="50" />
+    <Property Name="SSC_Passing_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="SSC_Division_Board" Type="nvarchar" MaxLength="50" />
+    <Property Name="Other_SSC_Board" Type="nvarchar(max)" />
+    <Property Name="Date_of_Leaving_Secondary_School" Type="nvarchar(max)" />
+    <Property Name="Date_of_Leaving_Junior_College" Type="nvarchar(max)" />
+    <Property Name="Name_of_Secondary_School" Type="nvarchar(max)" />
+    <Property Name="Secondary_School_Village" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_Taluka" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_District" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_Index_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Secondary_School_Udise_No" Type="nvarchar" MaxLength="20" />
+    <Property Name="Attended_Junior_College_Yes_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Name_of_Junior_College" Type="nvarchar(max)" />
+    <Property Name="Junior_College_Village" Type="nvarchar" MaxLength="50" />
+    <Property Name="Junior_College_District" Type="nvarchar" MaxLength="50" />
+    <Property Name="Junior_College_State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Junior_College_Index_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Junior_College_Udise_No" Type="nvarchar" MaxLength="20" />
+    <Property Name="Junior_College_Stream" Type="nvarchar" MaxLength="10" />
+    <Property Name="FYJC_Passing_Month" Type="nvarchar" MaxLength="20" />
+    <Property Name="FYJC_Passing_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="FYJC_Passing_Status" Type="nvarchar" MaxLength="10" />
+    <Property Name="Division" Type="nvarchar" MaxLength="2" />
+    <Property Name="District_of_Form_Submission" Type="nvarchar" MaxLength="2" />
+    <Property Name="Taluka_of_Form_Submission" Type="nvarchar" MaxLength="2" />
+    <Property Name="Stream_of_Form" Type="nvarchar" MaxLength="10" />
+    <Property Name="Medium_of_Form" Type="nvarchar" MaxLength="10" />
+    <Property Name="College_of_Form_Submission" Type="nvarchar(max)" />
+    <Property Name="College_Index_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Declaration_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Name_of_Debarred_Board" Type="nvarchar(max)" />
+    <Property Name="Exam_of_Debar" Type="nvarchar(max)" />
+    <Property Name="Debarred_From_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="Debarred_To_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="Secondary_School_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="FYJC_Leaving_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="School_Leaving_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="School_Leaving_Duplicate_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Unique_ID_Payment" Type="nvarchar(max)" />
+    <Property Name="Selected_Language" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tbl_HSC_Form17_Final">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="S_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ref_ID" Type="int" />
+    <Property Name="Last_Name" Type="nvarchar(max)" />
+    <Property Name="First_Name" Type="nvarchar(max)" />
+    <Property Name="Father_Husband_Name" Type="nvarchar(max)" />
+    <Property Name="Mother_Name" Type="nvarchar(max)" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="Residential_Address" Type="nvarchar(max)" />
+    <Property Name="Pincode" Type="nvarchar" MaxLength="6" />
+    <Property Name="District" Type="nvarchar" MaxLength="2" />
+    <Property Name="Taluka" Type="nvarchar" MaxLength="2" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Aadhar_No" Type="nvarchar" MaxLength="12" />
+    <Property Name="Mobile_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Email_ID" Type="nvarchar(max)" />
+    <Property Name="DOB" Type="nvarchar(max)" />
+    <Property Name="Village_of_Birth" Type="nvarchar(max)" />
+    <Property Name="Taluka_of_Birth" Type="nvarchar(max)" />
+    <Property Name="District_of_Birth" Type="nvarchar(max)" />
+    <Property Name="SSC_Passing_Month" Type="nvarchar" MaxLength="50" />
+    <Property Name="SSC_Passing_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="SSC_Division_Board" Type="nvarchar" MaxLength="50" />
+    <Property Name="Other_SSC_Board" Type="nvarchar(max)" />
+    <Property Name="Date_of_Leaving_Secondary_School" Type="nvarchar(max)" />
+    <Property Name="Date_of_Leaving_Junior_College" Type="nvarchar(max)" />
+    <Property Name="Name_of_Secondary_School" Type="nvarchar(max)" />
+    <Property Name="Secondary_School_Village" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_Taluka" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_District" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_Index_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Secondary_School_Udise_No" Type="nvarchar" MaxLength="20" />
+    <Property Name="Attended_Junior_College_Yes_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Name_of_Junior_College" Type="nvarchar(max)" />
+    <Property Name="Junior_College_Village" Type="nvarchar" MaxLength="50" />
+    <Property Name="Junior_College_District" Type="nvarchar" MaxLength="50" />
+    <Property Name="Junior_College_State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Junior_College_Index_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Junior_College_Udise_No" Type="nvarchar" MaxLength="20" />
+    <Property Name="Junior_College_Stream" Type="nvarchar" MaxLength="10" />
+    <Property Name="FYJC_Passing_Month" Type="nvarchar" MaxLength="20" />
+    <Property Name="FYJC_Passing_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="FYJC_Passing_Status" Type="nvarchar" MaxLength="10" />
+    <Property Name="Division" Type="nvarchar" MaxLength="2" />
+    <Property Name="District_of_Form_Submission" Type="nvarchar" MaxLength="2" />
+    <Property Name="Taluka_of_Form_Submission" Type="nvarchar" MaxLength="2" />
+    <Property Name="Stream_of_Form" Type="nvarchar" MaxLength="10" />
+    <Property Name="Medium_of_Form" Type="nvarchar" MaxLength="10" />
+    <Property Name="College_of_Form_Submission" Type="nvarchar(max)" />
+    <Property Name="College_Index_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Declaration_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Name_of_Debarred_Board" Type="nvarchar(max)" />
+    <Property Name="Exam_of_Debar" Type="nvarchar(max)" />
+    <Property Name="Debarred_From_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="Debarred_To_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="Secondary_School_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="FYJC_Leaving_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="School_Leaving_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="School_Leaving_Duplicate_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Unique_ID_Payment" Type="nvarchar(max)" />
+    <Property Name="Selected_Language" Type="nvarchar" MaxLength="50" />
+    <Property Name="EC_Status" Type="nvarchar" MaxLength="10" />
+    <Property Name="EC_Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="EC_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tbl_HSC_Payment">
+    <Key>
+      <PropertyRef Name="clientTxnId" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pgRespCode" Type="nvarchar(max)" />
+    <Property Name="PGTxnNo" Type="nvarchar(max)" />
+    <Property Name="SabPaisaTxId" Type="nvarchar(max)" />
+    <Property Name="issuerRefNo" Type="nvarchar(max)" />
+    <Property Name="authIdCode" Type="nvarchar(max)" />
+    <Property Name="amount" Type="nvarchar(max)" />
+    <Property Name="clientTxnId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" />
+    <Property Name="lastName" Type="nvarchar(max)" />
+    <Property Name="payMode" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="mobileNo" Type="nvarchar(max)" />
+    <Property Name="spRespCode" Type="nvarchar(max)" />
+    <Property Name="cid" Type="nvarchar(max)" />
+    <Property Name="bid" Type="nvarchar(max)" />
+    <Property Name="clientCode" Type="nvarchar(max)" />
+    <Property Name="payeeProfile" Type="nvarchar(max)" />
+    <Property Name="transDate" Type="nvarchar(max)" />
+    <Property Name="spRespStatus" Type="nvarchar(max)" />
+    <Property Name="m3" Type="nvarchar(max)" />
+    <Property Name="challanNo" Type="nvarchar(max)" />
+    <Property Name="reMsg" Type="nvarchar(max)" />
+    <Property Name="orgTxnAmount" Type="nvarchar(max)" />
+    <Property Name="programId" Type="nvarchar(max)" />
+    <Property Name="midName" Type="nvarchar(max)" />
+    <Property Name="Add" Type="nvarchar(max)" />
+    <Property Name="param1" Type="nvarchar(max)" />
+    <Property Name="param2" Type="nvarchar(max)" />
+    <Property Name="param3" Type="nvarchar(max)" />
+    <Property Name="param4" Type="nvarchar(max)" />
+    <Property Name="udf5" Type="nvarchar(max)" />
+    <Property Name="udf6" Type="nvarchar(max)" />
+    <Property Name="udf7" Type="nvarchar(max)" />
+    <Property Name="udf8" Type="nvarchar(max)" />
+    <Property Name="udf9" Type="nvarchar(max)" />
+    <Property Name="udf10" Type="nvarchar(max)" />
+    <Property Name="udf11" Type="nvarchar(max)" />
+    <Property Name="udf12" Type="nvarchar(max)" />
+    <Property Name="udf13" Type="nvarchar(max)" />
+    <Property Name="udf14" Type="nvarchar(max)" />
+    <Property Name="udf15" Type="nvarchar(max)" />
+    <Property Name="udf16" Type="nvarchar(max)" />
+    <Property Name="udf17" Type="nvarchar(max)" />
+    <Property Name="udf18" Type="nvarchar(max)" />
+    <Property Name="udf19" Type="nvarchar(max)" />
+    <Property Name="udf20" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_HSC_Payment_Error">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pgRespCode" Type="nvarchar(max)" />
+    <Property Name="PGTxnNo" Type="nvarchar(max)" />
+    <Property Name="SabPaisaTxId" Type="nvarchar(max)" />
+    <Property Name="issuerRefNo" Type="nvarchar(max)" />
+    <Property Name="authIdCode" Type="nvarchar(max)" />
+    <Property Name="amount" Type="nvarchar(max)" />
+    <Property Name="clientTxnId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" />
+    <Property Name="lastName" Type="nvarchar(max)" />
+    <Property Name="payMode" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="mobileNo" Type="nvarchar(max)" />
+    <Property Name="spRespCode" Type="nvarchar(max)" />
+    <Property Name="cid" Type="nvarchar(max)" />
+    <Property Name="bid" Type="nvarchar(max)" />
+    <Property Name="clientCode" Type="nvarchar(max)" />
+    <Property Name="payeeProfile" Type="nvarchar(max)" />
+    <Property Name="transDate" Type="nvarchar(max)" />
+    <Property Name="spRespStatus" Type="nvarchar(max)" />
+    <Property Name="m3" Type="nvarchar(max)" />
+    <Property Name="challanNo" Type="nvarchar(max)" />
+    <Property Name="reMsg" Type="nvarchar(max)" />
+    <Property Name="orgTxnAmount" Type="nvarchar(max)" />
+    <Property Name="programId" Type="nvarchar(max)" />
+    <Property Name="midName" Type="nvarchar(max)" />
+    <Property Name="Add" Type="nvarchar(max)" />
+    <Property Name="param1" Type="nvarchar(max)" />
+    <Property Name="param2" Type="nvarchar(max)" />
+    <Property Name="param3" Type="nvarchar(max)" />
+    <Property Name="param4" Type="nvarchar(max)" />
+    <Property Name="udf5" Type="nvarchar(max)" />
+    <Property Name="udf6" Type="nvarchar(max)" />
+    <Property Name="udf7" Type="nvarchar(max)" />
+    <Property Name="udf8" Type="nvarchar(max)" />
+    <Property Name="udf9" Type="nvarchar(max)" />
+    <Property Name="udf10" Type="nvarchar(max)" />
+    <Property Name="udf11" Type="nvarchar(max)" />
+    <Property Name="udf12" Type="nvarchar(max)" />
+    <Property Name="udf13" Type="nvarchar(max)" />
+    <Property Name="udf14" Type="nvarchar(max)" />
+    <Property Name="udf15" Type="nvarchar(max)" />
+    <Property Name="udf16" Type="nvarchar(max)" />
+    <Property Name="udf17" Type="nvarchar(max)" />
+    <Property Name="udf18" Type="nvarchar(max)" />
+    <Property Name="udf19" Type="nvarchar(max)" />
+    <Property Name="udf20" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Login_Credentials">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Division_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tbl_OTP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OTP" Type="nvarchar" MaxLength="50" />
+    <Property Name="Division" Type="int" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tbl_Site_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active_Status" Type="int" />
+    <Property Name="Late_Fee_Date" Type="date" />
+    <Property Name="Super_Late_Fee_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Tbl_SSC_Form17">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Last_Name" Type="nvarchar(max)" />
+    <Property Name="First_Name" Type="nvarchar(max)" />
+    <Property Name="Father_Husband_Name" Type="nvarchar(max)" />
+    <Property Name="Mother_Name" Type="nvarchar(max)" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="Residential_Address" Type="nvarchar(max)" />
+    <Property Name="Pincode" Type="nvarchar" MaxLength="6" />
+    <Property Name="District" Type="nvarchar" MaxLength="2" />
+    <Property Name="Taluka" Type="nvarchar" MaxLength="2" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Aadhar_No" Type="nvarchar" MaxLength="12" />
+    <Property Name="Mobile_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Email_ID" Type="nvarchar(max)" />
+    <Property Name="DOB" Type="nvarchar(max)" />
+    <Property Name="Village_of_Birth" Type="nvarchar(max)" />
+    <Property Name="Taluka_of_Birth" Type="nvarchar(max)" />
+    <Property Name="District_of_Birth" Type="nvarchar(max)" />
+    <Property Name="Name_of_Secondary_School" Type="nvarchar(max)" />
+    <Property Name="Secondary_School_Village" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_Taluka" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_District" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_Udise_No" Type="nvarchar" MaxLength="20" />
+    <Property Name="Secondary_School_Pincode" Type="nvarchar" MaxLength="10" />
+    <Property Name="Whether_Handicap" Type="nvarchar" MaxLength="5" />
+    <Property Name="Handicap_Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date_of_Leaving_Secondary_School" Type="nvarchar(max)" />
+    <Property Name="Last_Studied_Standard" Type="nvarchar" MaxLength="2" />
+    <Property Name="Status_of_Last_Studied_Standard" Type="nvarchar" MaxLength="15" />
+    <Property Name="Division" Type="nvarchar" MaxLength="2" />
+    <Property Name="District_of_Form_Submission" Type="nvarchar" MaxLength="2" />
+    <Property Name="Taluka_of_Form_Submission" Type="nvarchar" MaxLength="2" />
+    <Property Name="Medium_of_Form" Type="nvarchar" MaxLength="10" />
+    <Property Name="School_of_Form_Submission" Type="nvarchar(max)" />
+    <Property Name="Index_No_of_School" Type="nvarchar" MaxLength="10" />
+    <Property Name="Declaration_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Name_of_Debarred_Board" Type="nvarchar(max)" />
+    <Property Name="Exam_of_Debar" Type="nvarchar(max)" />
+    <Property Name="Debarred_From_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="Debarred_To_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="Leaving_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Duplicate_Leaving_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Unique_ID_Payment" Type="nvarchar(max)" />
+    <Property Name="Selected_Language" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tbl_SSC_Form17_Final">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="S_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ref_ID" Type="int" />
+    <Property Name="Last_Name" Type="nvarchar(max)" />
+    <Property Name="First_Name" Type="nvarchar(max)" />
+    <Property Name="Father_Husband_Name" Type="nvarchar(max)" />
+    <Property Name="Mother_Name" Type="nvarchar(max)" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="Residential_Address" Type="nvarchar(max)" />
+    <Property Name="Pincode" Type="nvarchar" MaxLength="6" />
+    <Property Name="District" Type="nvarchar" MaxLength="2" />
+    <Property Name="Taluka" Type="nvarchar" MaxLength="2" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Aadhar_No" Type="nvarchar" MaxLength="12" />
+    <Property Name="Mobile_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Email_ID" Type="nvarchar(max)" />
+    <Property Name="DOB" Type="nvarchar(max)" />
+    <Property Name="Village_of_Birth" Type="nvarchar(max)" />
+    <Property Name="Taluka_of_Birth" Type="nvarchar(max)" />
+    <Property Name="District_of_Birth" Type="nvarchar(max)" />
+    <Property Name="Name_of_Secondary_School" Type="nvarchar(max)" />
+    <Property Name="Secondary_School_Village" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_Taluka" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_District" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Secondary_School_Udise_No" Type="nvarchar" MaxLength="20" />
+    <Property Name="Secondary_School_Pincode" Type="nvarchar" MaxLength="10" />
+    <Property Name="Whether_Handicap" Type="nvarchar" MaxLength="5" />
+    <Property Name="Handicap_Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date_of_Leaving_Secondary_School" Type="nvarchar(max)" />
+    <Property Name="Last_Studied_Standard" Type="nvarchar" MaxLength="2" />
+    <Property Name="Status_of_Last_Studied_Standard" Type="nvarchar" MaxLength="15" />
+    <Property Name="Division" Type="nvarchar" MaxLength="2" />
+    <Property Name="District_of_Form_Submission" Type="nvarchar" MaxLength="2" />
+    <Property Name="Taluka_of_Form_Submission" Type="nvarchar" MaxLength="2" />
+    <Property Name="Medium_of_Form" Type="nvarchar" MaxLength="10" />
+    <Property Name="School_of_Form_Submission" Type="nvarchar(max)" />
+    <Property Name="Index_No_of_School" Type="nvarchar" MaxLength="10" />
+    <Property Name="Declaration_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Name_of_Debarred_Board" Type="nvarchar(max)" />
+    <Property Name="Exam_of_Debar" Type="nvarchar(max)" />
+    <Property Name="Debarred_From_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="Debarred_To_Year" Type="nvarchar" MaxLength="5" />
+    <Property Name="Leaving_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Duplicate_Leaving_Certificate_Yes_No" Type="nvarchar" MaxLength="5" />
+    <Property Name="Unique_ID_Payment" Type="nvarchar(max)" />
+    <Property Name="Selected_Language" Type="nvarchar" MaxLength="50" />
+    <Property Name="EC_Status" Type="nvarchar" MaxLength="10" />
+    <Property Name="EC_Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="EC_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tbl_SSC_Payment">
+    <Key>
+      <PropertyRef Name="clientTxnId" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pgRespCode" Type="nvarchar(max)" />
+    <Property Name="PGTxnNo" Type="nvarchar(max)" />
+    <Property Name="SabPaisaTxId" Type="nvarchar(max)" />
+    <Property Name="issuerRefNo" Type="nvarchar(max)" />
+    <Property Name="authIdCode" Type="nvarchar(max)" />
+    <Property Name="amount" Type="nvarchar(max)" />
+    <Property Name="clientTxnId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" />
+    <Property Name="lastName" Type="nvarchar(max)" />
+    <Property Name="payMode" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="mobileNo" Type="nvarchar(max)" />
+    <Property Name="spRespCode" Type="nvarchar(max)" />
+    <Property Name="cid" Type="nvarchar(max)" />
+    <Property Name="bid" Type="nvarchar(max)" />
+    <Property Name="clientCode" Type="nvarchar(max)" />
+    <Property Name="payeeProfile" Type="nvarchar(max)" />
+    <Property Name="transDate" Type="nvarchar(max)" />
+    <Property Name="spRespStatus" Type="nvarchar(max)" />
+    <Property Name="m3" Type="nvarchar(max)" />
+    <Property Name="challanNo" Type="nvarchar(max)" />
+    <Property Name="reMsg" Type="nvarchar(max)" />
+    <Property Name="orgTxnAmount" Type="nvarchar(max)" />
+    <Property Name="programId" Type="nvarchar(max)" />
+    <Property Name="midName" Type="nvarchar(max)" />
+    <Property Name="Add" Type="nvarchar(max)" />
+    <Property Name="param1" Type="nvarchar(max)" />
+    <Property Name="param2" Type="nvarchar(max)" />
+    <Property Name="param3" Type="nvarchar(max)" />
+    <Property Name="param4" Type="nvarchar(max)" />
+    <Property Name="udf5" Type="nvarchar(max)" />
+    <Property Name="udf6" Type="nvarchar(max)" />
+    <Property Name="udf7" Type="nvarchar(max)" />
+    <Property Name="udf8" Type="nvarchar(max)" />
+    <Property Name="udf9" Type="nvarchar(max)" />
+    <Property Name="udf10" Type="nvarchar(max)" />
+    <Property Name="udf11" Type="nvarchar(max)" />
+    <Property Name="udf12" Type="nvarchar(max)" />
+    <Property Name="udf13" Type="nvarchar(max)" />
+    <Property Name="udf14" Type="nvarchar(max)" />
+    <Property Name="udf15" Type="nvarchar(max)" />
+    <Property Name="udf16" Type="nvarchar(max)" />
+    <Property Name="udf17" Type="nvarchar(max)" />
+    <Property Name="udf18" Type="nvarchar(max)" />
+    <Property Name="udf19" Type="nvarchar(max)" />
+    <Property Name="udf20" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_SSC_Payment_Error">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pgRespCode" Type="nvarchar(max)" />
+    <Property Name="PGTxnNo" Type="nvarchar(max)" />
+    <Property Name="SabPaisaTxId" Type="nvarchar(max)" />
+    <Property Name="issuerRefNo" Type="nvarchar(max)" />
+    <Property Name="authIdCode" Type="nvarchar(max)" />
+    <Property Name="amount" Type="nvarchar(max)" />
+    <Property Name="clientTxnId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" />
+    <Property Name="lastName" Type="nvarchar(max)" />
+    <Property Name="payMode" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="mobileNo" Type="nvarchar(max)" />
+    <Property Name="spRespCode" Type="nvarchar(max)" />
+    <Property Name="cid" Type="nvarchar(max)" />
+    <Property Name="bid" Type="nvarchar(max)" />
+    <Property Name="clientCode" Type="nvarchar(max)" />
+    <Property Name="payeeProfile" Type="nvarchar(max)" />
+    <Property Name="transDate" Type="nvarchar(max)" />
+    <Property Name="spRespStatus" Type="nvarchar(max)" />
+    <Property Name="m3" Type="nvarchar(max)" />
+    <Property Name="challanNo" Type="nvarchar(max)" />
+    <Property Name="reMsg" Type="nvarchar(max)" />
+    <Property Name="orgTxnAmount" Type="nvarchar(max)" />
+    <Property Name="programId" Type="nvarchar(max)" />
+    <Property Name="midName" Type="nvarchar(max)" />
+    <Property Name="Add" Type="nvarchar(max)" />
+    <Property Name="param1" Type="nvarchar(max)" />
+    <Property Name="param2" Type="nvarchar(max)" />
+    <Property Name="param3" Type="nvarchar(max)" />
+    <Property Name="param4" Type="nvarchar(max)" />
+    <Property Name="udf5" Type="nvarchar(max)" />
+    <Property Name="udf6" Type="nvarchar(max)" />
+    <Property Name="udf7" Type="nvarchar(max)" />
+    <Property Name="udf8" Type="nvarchar(max)" />
+    <Property Name="udf9" Type="nvarchar(max)" />
+    <Property Name="udf10" Type="nvarchar(max)" />
+    <Property Name="udf11" Type="nvarchar(max)" />
+    <Property Name="udf12" Type="nvarchar(max)" />
+    <Property Name="udf13" Type="nvarchar(max)" />
+    <Property Name="udf14" Type="nvarchar(max)" />
+    <Property Name="udf15" Type="nvarchar(max)" />
+    <Property Name="udf16" Type="nvarchar(max)" />
+    <Property Name="udf17" Type="nvarchar(max)" />
+    <Property Name="udf18" Type="nvarchar(max)" />
+    <Property Name="udf19" Type="nvarchar(max)" />
+    <Property Name="udf20" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Unique_ID_Payment">
+    <Key>
+      <PropertyRef Name="Unique_ID_Payment" />
+    </Key>
+    <Property Name="Unique_ID_Payment" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Update_Old_College">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Form_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="Old_College" Type="nvarchar" MaxLength="50" />
+    <Property Name="Updated_College" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email_ID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Tbl_HSC_Form17_Final_Tbl_HSC_Form17">
+    <End Role="Tbl_HSC_Form17" Type="Self.Tbl_HSC_Form17" Multiplicity="0..1" />
+    <End Role="Tbl_HSC_Form17_Final" Type="Self.Tbl_HSC_Form17_Final" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_HSC_Form17">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_HSC_Form17_Final">
+        <PropertyRef Name="Ref_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_SSC_Form17_Final_Tbl_SSC_Form17">
+    <End Role="Tbl_SSC_Form17" Type="Self.Tbl_SSC_Form17" Multiplicity="0..1" />
+    <End Role="Tbl_SSC_Form17_Final" Type="Self.Tbl_SSC_Form17_Final" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_SSC_Form17">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_SSC_Form17_Final">
+        <PropertyRef Name="Ref_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_SSC_Payment_Tbl_SSC_Payment">
+    <End Role="Tbl_SSC_Payment" Type="Self.Tbl_SSC_Payment" Multiplicity="1" />
+    <End Role="Tbl_SSC_Payment1" Type="Self.Tbl_SSC_Payment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_SSC_Payment">
+        <PropertyRef Name="clientTxnId" />
+      </Principal>
+      <Dependent Role="Tbl_SSC_Payment1">
+        <PropertyRef Name="clientTxnId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="INSERT_DATA_HSC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="s_id" Type="nvarchar" Mode="In" />
+    <Parameter Name="div" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="RESULT" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="INSERT_DATA_SSC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="s_id" Type="nvarchar" Mode="In" />
+    <Parameter Name="div" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="RESULT" Type="int" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="Form17ModelStoreContainer">
+    <EntitySet Name="Tbl_Center" EntityType="Self.Tbl_Center" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Center_Details" EntityType="Self.Tbl_Center_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Code_Master" EntityType="Self.Tbl_Code_Master" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Colmst" EntityType="Self.Tbl_Colmst" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Division_Details" EntityType="Self.Tbl_Division_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_HSC_Form17" EntityType="Self.Tbl_HSC_Form17" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_HSC_Form17_Final" EntityType="Self.Tbl_HSC_Form17_Final" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_HSC_Payment" EntityType="Self.Tbl_HSC_Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_HSC_Payment_Error" EntityType="Self.Tbl_HSC_Payment_Error" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Login_Credentials" EntityType="Self.Tbl_Login_Credentials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_OTP" EntityType="Self.Tbl_OTP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Site_Status" EntityType="Self.Tbl_Site_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_SSC_Form17" EntityType="Self.Tbl_SSC_Form17" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_SSC_Form17_Final" EntityType="Self.Tbl_SSC_Form17_Final" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_SSC_Payment" EntityType="Self.Tbl_SSC_Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_SSC_Payment_Error" EntityType="Self.Tbl_SSC_Payment_Error" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Unique_ID_Payment" EntityType="Self.Tbl_Unique_ID_Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Update_Old_College" EntityType="Self.Tbl_Update_Old_College" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Tbl_HSC_Form17_Final_Tbl_HSC_Form17" Association="Self.FK_Tbl_HSC_Form17_Final_Tbl_HSC_Form17">
+      <End Role="Tbl_HSC_Form17" EntitySet="Tbl_HSC_Form17" />
+      <End Role="Tbl_HSC_Form17_Final" EntitySet="Tbl_HSC_Form17_Final" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_SSC_Form17_Final_Tbl_SSC_Form17" Association="Self.FK_Tbl_SSC_Form17_Final_Tbl_SSC_Form17">
+      <End Role="Tbl_SSC_Form17" EntitySet="Tbl_SSC_Form17" />
+      <End Role="Tbl_SSC_Form17_Final" EntitySet="Tbl_SSC_Form17_Final" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_SSC_Payment_Tbl_SSC_Payment" Association="Self.FK_Tbl_SSC_Payment_Tbl_SSC_Payment">
+      <End Role="Tbl_SSC_Payment" EntitySet="Tbl_SSC_Payment" />
+      <End Role="Tbl_SSC_Payment1" EntitySet="Tbl_SSC_Payment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

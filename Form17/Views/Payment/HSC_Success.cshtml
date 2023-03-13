@@ -1,0 +1,101 @@
+﻿@model Form17.Models.HSC_Success_View
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/Payment_Layout.cshtml";
+    var ID = Model.sid;
+    ID += ".pdf";
+}
+<style>
+    @@media screen and (max-width: 991px) {
+        .container .transact_box {
+            border-right: none;
+            border-bottom: dotted;
+        }
+    }
+
+    .row h3 {
+        font-size: 18px;
+        color: #06213F;
+        font-weight: 600;
+        margin: 2px;
+        line-height: 24px;
+        border-bottom: 0px solid;
+    }
+
+    .container h6 {
+        border: none;
+        border-bottom: 0px solid;
+        margin: 0 0 5px 0;
+        color: black;
+        font-weight: 600;
+    }
+
+    .transact_box {
+        border-right: dashed;
+        margin: 11px 0px;
+    }
+
+    .last_transact_box {
+        margin: 11px 0px;
+    }
+
+    .message {
+        color: #06213F;
+        font-weight: 600;
+        margin: 2px 10px 20px 1px;
+        text-align: center;
+    }
+</style>
+<div style="text-align:center">
+    <jumbotron style="color:green;font-size:2em;text-align:center;"><i class="fa fa-check" aria-hidden="true"></i> Your payment for <i class="fa fa-inr" aria-hidden="true"></i> @Model.orgTxnAmount is successful !</jumbotron>
+</div>
+<div class="container">
+    <div style="background:#F0F0F0; padding:10px; border:2px solid #c6c6c6">
+        <div style="background:#ffffff; margin:auto 2em 0 2em;border:2px solid #c6c6c6">
+            <div class="row firstbox">
+                <div class="col-md-3 text-center transact_box">
+                    <h3>
+                        <span id="Transact_ID">@Model.SabPaisaTxId</span>
+                    </h3>
+                    <h6>Transaction ID</h6>
+                </div>
+                <div class="col-md-3 text-center transact_box">
+                    <h3>
+                        <span id="Bank_Transact_ID">@Model.issuerRefNo</span>
+                    </h3>
+                    <h6>Bank Transaction ID</h6>
+                </div>
+                <div class="col-md-3 text-center transact_box">
+                    <h3>
+                        <span id="Transaction_Date">@Model.transDate</span>
+                    </h3>
+                    <h6>Transaction Date</h6>
+                </div>
+                <div class="col-md-3 text-center last_transact_box">
+                    <h3>
+                        <span id="Transaction_Amount">Rs.@Model.orgTxnAmount</span>
+                    </h3>
+                    <h6>Transaction Amount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="transact_box" style="background:#ffffff; margin:30px 2em 0 2em;border:2px solid #c6c6c6">
+            <div style="padding: 10px;">
+                @*<p class="message" style="margin-bottom:2px">
+                        Your payment is <u>Successful</u>. We have sent an email confirmation to <span style="color:blue">deepalitate27@gmail.com</span>  and a SMS
+                        to 9970658784 confirming your transaction.
+                    </p>*@
+
+            </div>
+            <div style="padding: 10px; padding-bottom:0px">
+                <p class="message">
+                    If you don’t get an Email or SMS from us within 1 hour then, write to us at <span style="color:blue">support@sabpaisa.in.</span>
+                    <br />
+                    <a class="btn btn-info" href="/PDF/HSC/@ID">Download Application</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

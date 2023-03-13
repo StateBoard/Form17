@@ -1,0 +1,2 @@
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Form17.Controllers.PDFMaker.Create_SSC_PDF(Int32 IDs, Tbl_SSC_Payment payment_model) in D:\Sada\Projects\Form17\Form17\Controllers\PDFMaker.cs:line 142

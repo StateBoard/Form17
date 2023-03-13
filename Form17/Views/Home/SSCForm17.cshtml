@@ -1,0 +1,787 @@
+﻿@model Form17.Models.SSC_Form17_Model
+@{
+    ViewBag.Title = "SSCForm17";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form id="frm_form17">
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div style="text-align:center">
+            <strong>
+                <span id="ContentPlaceHolder1_Label2" style="color:Black"> Application for Direct Enrollment as a Private candidate at the SSC Examination of @ViewBag.MonthYearofExam </span>
+            </strong>
+        </div>
+        <div class="row" style="padding:15px;  border-bottom: double;">
+            <div class="form-group col-md-12">
+                <strong>
+                    <span>To,</span><br />
+                    <span>
+                        Maharashtra State Board of Secondary <br /> & Higher Secondary Education,<br />
+                        Divisional Board
+                    </span>
+                </strong>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" style="font-weight: 700; font-size: medium;padding-left:30px ;color: #FF0000;">
+                    <p>Fields marked with '*' are compulsory to be filled.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="form-group col-md-3">
+                <label>(1) Personal Details</label>
+            </div>
+        </div>
+        <div class="row" style="padding:15px">
+            <div class="form-group col-md-3">
+                <label for="Last_Name">Last Name:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="First_Name"> First Name:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="First_Name"> Father/Husband Name:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Father_Husband_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Father_Husband_Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Mother_Name">Mother Name:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Mother_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mother_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row" style="padding-left:15px; padding-bottom:15px; border-bottom: double;">
+            <div class="col-md-3">
+                <label for="Gender">Gender: </label><span style="color:Red">*</span>
+                <select name="Gender" id="Gender" class="form-control">
+                    <option value="0">--SELECT--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row" style="padding:10px;">
+            <div class="form-group col-md-5">
+                <label for="Residential_Address">(2) Residential Address</label><span style="color:Red">*</span>
+                @Html.TextAreaFor(model => model.Residential_Address, new { rows = "3", cols = "40", @style = "height:60px; width:100%", htmlAttributes = new { @class = "form-control col-md-5" } })                
+                @Html.ValidationMessageFor(model => model.Residential_Address, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Pincode">Pincode:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control", maxLength = 6 } })
+                @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row" style="padding:5px; padding-left:10px; border-bottom:double">
+            <div class="form-group col-md-3">
+                <label for="District">District:</label><span style="color:Red">*</span>
+                @Html.DropDownListFor(model => model.District, ViewBag.DistrictList as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Taluka">Taluka: </label><span style="color:Red">*</span>
+                @Html.DropDownListFor(model => model.Taluka, new SelectList(string.Empty, "Value", "Text"), "-Select Taluka-", new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="State"> State:</label><span style="color:Red">*</span>
+                <select name="State" onchange="" id="State" class="form-control">
+                    <option value="0">-Select State-</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttaranchal">Uttaranchal</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Madya Pradesh">Madya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Orissa">Orissa</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Andaman and Nicobar Islands ">Andaman and Nicobar Islands </option>
+                    <option value="Chandigarh ">Chandigarh </option>
+                    <option value="Dadar and Nagar Haveli ">Dadar and Nagar Haveli </option>
+                    <option value="Daman and Diu">Daman and Diu </option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Lakshadeep">Lakshadeep</option>
+                    <option value="Pondicherry">Pondicherry</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="form-group col-md-3">
+                <label for="Contact">(3) Contact Details:</label>
+            </div>
+        </div>
+        <div class="row" style="padding:15px; padding-bottom:5px; border-bottom: double;">
+            <div class="form-group col-md-3">
+                <label for="Aadhar_No">Aadhar No:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Aadhar_No, new { htmlAttributes = new { @class = "form-control ", maxLength = 12 } })
+                @Html.ValidationMessageFor(model => model.Aadhar_No, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Mobile_No">Mobile No:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Mobile_No, new { htmlAttributes = new { @class = "form-control ", maxLength = 10 } })
+                @Html.ValidationMessageFor(model => model.Mobile_No, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="sname">Email Id:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Email_ID, new { htmlAttributes = new { @class = "form-control ", placeholder = "example@example.com", maxLength = 200 } })
+                @Html.ValidationMessageFor(model => model.Email_ID, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <span id="ContentPlaceHolder1_lblemailmsg" style="color:Red;">( एक ईमेल आयडी एका विद्यार्थ्यासाठीच वैध राहील.एका ईमेल आयडीने पुन्हा नोंदणी करता येणार नाही.पुन्हा अर्ज करत असताना नवीन ईमेल आयडी चा वापर करावा.)</span>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="form-group col-md-3">
+                <label for="Birth">(4) Birth Details:</label>
+            </div>
+        </div>
+        <div class="row" style="padding:15px">
+            <div class="form-group col-md-6">
+                <label for="DOB"> Date of birth according to Christian Era :</label><span style="color:Red">*</span>
+                <input name="DOB" type="text" placeholder="dd/mm/yyyy" id="DOB" style="width:200px" class="form-control datepicker" readonly="readonly" autocomplete="off" />
+            </div>
+        </div>
+        <div class="row" style="padding:15px;  padding-bottom:5px; border-bottom: double;">
+            <div class="form-group col-md-3">
+                <label for="Village_of_Birth">Village/Town of birth:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Village_of_Birth, new { htmlAttributes = new { @class = "form-control ", maxLength = 200 } })
+                @Html.ValidationMessageFor(model => model.Village_of_Birth, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Taluka_of_Birth">Taluka of birth:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Taluka_of_Birth, new { htmlAttributes = new { @class = "form-control ", maxLength = 200 } })
+                @Html.ValidationMessageFor(model => model.Taluka_of_Birth, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="District_of_Birth">District of birth:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.District_of_Birth, new { htmlAttributes = new { @class = "form-control ", maxLength = 200 } })
+                @Html.ValidationMessageFor(model => model.Aadhar_No, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="row" style="padding:10px; margin-top:15px">
+            <div class="form-group col-md-5" @*style="float:left;margin-left:8px"*@>
+                <label for="Name_of_Secondary_School">(5) Name of last attended recognised Secondary School :</label><span style="color:Red">*</span>
+                @Html.TextAreaFor(model => model.Name_of_Secondary_School, new { rows = "3", cols = "40", @style = "height:60px; width:100%", htmlAttributes = new { @class = "form-control col-md-5" } })                
+                @Html.ValidationMessageFor(model => model.Name_of_Secondary_School, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_Udise_No">
+                    School Udise No:
+                </label>
+                @Html.EditorFor(model => model.Secondary_School_Udise_No, new { htmlAttributes = new { @class = "form-control ", maxLength = 11 } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_Udise_No, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_Pincode">
+                    Pincode:
+                </label>
+                <span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Secondary_School_Pincode, new { htmlAttributes = new { @class = "form-control ", maxLength = 6 } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_Pincode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="padding:15px;  padding-bottom:5px; border-bottom: double;">
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_Village">Village/Town:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Secondary_School_Village, new { htmlAttributes = new { @class = "form-control ", maxLength = 200 } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_Village, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_Taluka">
+                    Taluka:
+                </label>
+                <span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Secondary_School_Taluka, new { htmlAttributes = new { @class = "form-control ", maxLength = 200 } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_Taluka, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_District">District:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Secondary_School_District, new { htmlAttributes = new { @class = "form-control ", maxLength = 200 } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_District, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_State">State:</label><span style="color:Red">*</span>
+                @Html.EditorFor(model => model.Secondary_School_State, new { htmlAttributes = new { @class = "form-control ", maxLength = 200 } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="padding:15px;  border-bottom: double;">
+            <div class="form-group col-md-3">
+                <label for="Whether_Handicap">(6) HandiCap:</label><span style="color:Red">*</span>
+                <select name="Whether_Handicap" onchange="" id="Whether_Handicap" class="form-control">
+                    <option selected="selected" value="0">--SELECT--</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div id="HandicapCategory" class="form-group col-md-3" style="display:none">
+                <label for="Whether_Handicap">HandiCap Category:</label><span style="color:Red">*</span>
+                <select name="Handicap_Category" onchange="" id="Handicap_Category" class="form-control">
+                    <option selected="selected" value="0">--SELECT--</option>
+                    <option value="Blind">Blind</option>
+                    <option value="Deaf">Deaf</option>
+                    <option value="Dumb">Dumb</option>
+                    <option value="Orthopedically Handicapped">Orthopedically Handicapped</option>
+                    <option value="Spastic">Spastic</option>
+                    <option value="Learining Disable">Learining Disable</option>
+                    <option value="Autism">Autism</option>
+                    <option value="Cerebral Palsy">Cerebral Palsy</option>
+                    <option value="Mentally Retarded">Mentally Retarded</option>
+                    <option value="Intellectual Disability">Intellectual Disability</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding:15px; border-bottom: double;">
+            <div style="padding-top:18px; padding-left:5px; float:left">
+                <label for="Date_of_Leaving_Secondary_School">(7) Date of leaving the last attended secondary school: </label>
+                <span style="color:Red">*</span>
+            </div>
+            <div style="padding:15px; float:left">
+                <input name="Date_of_Leaving_Secondary_School" type="text" placeholder="dd/mm/yyyy" id="Date_of_Leaving_Secondary_School" readonly="readonly" style="width:200px" class="form-control datepicker" autocomplete="off" />
+            </div>
+        </div>
+        <div class="row" style="padding:10px; margin-top:15px; border-bottom:double">
+            <div class="form-group col-md-4">
+                <label for="Last_Studied_Standard">(8) Standard in which school Left:</label><span style="color:Red">*</span>
+                <select name="Last_Studied_Standard" onchange="" id="Last_Studied_Standard" class="form-control" style="width:200px">
+                    <option selected="selected" value="0">--SELECT--</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Status_of_Last_Studied_Standard">Status:</label><span style="color:Red">*</span>
+                <select name="Status_of_Last_Studied_Standard" onchange="" id="Status_of_Last_Studied_Standard" class="form-control">
+                    <option selected="selected" value="0">--SELECT--</option>
+                    <option value="Pass">Pass</option>
+                    <option value="Failed">Failed</option>
+                    <option value="Studying">Studying</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding:15px;">
+            <div class="col-9">
+                <label for="center">(9) Select school where you want to submit application.</label>
+            </div>
+        </div>
+
+        <div class="row" style="padding:15px">
+            <div class="form-group col-md-3">
+                <label for="District_of_Form_Submission">(1)District:</label><span style="color:Red">*</span>
+                @Html.DropDownListFor(model => model.District_of_Form_Submission, ViewBag.DistrictList as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Taluka_of_Form_Submission">(2)Taluka:</label><span style="color:Red">*</span>
+                @Html.DropDownListFor(model => model.Taluka_of_Form_Submission, new SelectList(string.Empty, "Value", "Text"), "-Select Taluka-", new { @class = "form-control", @disabled = "disable" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Medium_of_Form">(3)Medium:</label><span style="color:Red">*</span>
+                @Html.DropDownListFor(model => model.Medium_of_Form, new SelectList(string.Empty, "Value", "Text"), "-Select Medium-", new { @class = "form-control", @disabled = "disable" })
+            </div>
+        </div>
+        <div class="row" style="padding: 15px; border-bottom: double;">
+            <div class="form-group col-md-9">
+                <label for="School_of_Form_Submission">(4)Select School:</label><span style="color:Red">*</span>
+                @Html.DropDownListFor(model => model.School_of_Form_Submission, new SelectList(string.Empty, "Value", "Text"), "-Select School-", new { @class = "form-control", @disabled = "disable" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Index_No_of_School">School Index :</label><span style="color:Red">*</span>
+                <input name="Index_No_of_School" type="text" readonly="readonly" id="Index_No_of_School" class="form-control" />
+            </div>
+        </div>
+        <div class="row" style="border-bottom:double; padding:15px">
+            <div class="row" style="padding:15px">
+                <div class="col-9">
+                    <label for="sname">(10) I here by declare that I have not been debarred from appearing at any of the examinations held by any examination board or university in india or by any other examination authority.</label>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Declaration_Yes_No">YES/NO:</label><span style="color:Red">*</span>
+                    <select name="Declaration_Yes_No" onchange="" id="Declaration_Yes_No" class="form-control">
+                        <option selected="selected" value="0">--SELECT--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" id="debarredYes" style="padding:15px; display:none">
+                <div class="form-group col-md-3">
+                    <label for="Name_of_Debarred_Board">Name of the Board/University :</label><span style="color:Red">*</span>
+                    @Html.EditorFor(model => model.Name_of_Debarred_Board, new { htmlAttributes = new { @class = "form-control ", maxLength = 200 } })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Exam_of_Debar">Name of the Examination :</label><span style="color:Red">*</span>
+                    @Html.EditorFor(model => model.Exam_of_Debar, new { htmlAttributes = new { @class = "form-control ", maxLength = 200 } })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Debarred_From_Year">Debarred period from(in Year):</label><span style="color:Red">*</span>
+                    @Html.EditorFor(model => model.Debarred_From_Year, new { htmlAttributes = new { @class = "form-control ", placeholder = "yyyy", maxLength = 4 } })
+                    @Html.ValidationMessageFor(model => model.Debarred_From_Year, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Debarred_To_Year">Debarred to (in Year): </label><span style="color:Red">*</span>
+                    @Html.EditorFor(model => model.Debarred_To_Year, new { htmlAttributes = new { @class = "form-control ", placeholder = "yyyy", maxLength = 4 } })
+                    @Html.ValidationMessageFor(model => model.Debarred_To_Year, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding:15px">
+            <div class="col-9">
+                <label for="sname">(11) I enclose documents below:</label>
+                <span style="color:red">[<b>Instruction -</b> Individual file size should not be more than 200 KB while uploading. Supported file type - jpeg/jpg/png]</span>
+            </div>
+        </div>
+        <div class="row" style="padding:15px;">
+            <div class="row" style="padding-left:15px;">
+                <div class="col-9">
+                    <label for="Leaving_Certificate_Yes_No">(A) Original School Leaving Certificate:</label>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Leaving_Certificate_Yes_No">YES/NO:</label><span style="color:Red">*</span>
+                    <select name="Leaving_Certificate_Yes_No" id="Leaving_Certificate_Yes_No" class="form-control">
+                        <option selected="selected" value="0">--SELECT--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" id="Duplicate_LC_Yes_No" style="padding-left:15px;display:none;">
+                <div class="col-9">
+                    <label for="Duplicate_Leaving_Certificate_Yes_No">
+                        (B) Duplicate School leaving Certificate and its attested true copy with
+                        an self attested affidavit on plain paper regarding Not being the roll of any recognised school for academic years preceding
+                        the date of Secondary school certificate examination since the date of leaving the school shown in the duplicate school leaving Certificate:
+                    </label>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Duplicate_Leaving_Certificate_Yes_No">YES/NO:</label><span style="color:Red">*</span>
+                    <select name="Duplicate_Leaving_Certificate_Yes_No" id="Duplicate_Leaving_Certificate_Yes_No" class="form-control">
+                        <option selected="selected" value="0">--SELECT--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="padding-left:15px">
+                <div class="form-group col-md-3">
+                    <label>Passport Size photo:</label><span style="color: red">*</span>
+                    <br>
+                    <input type="file" name="SSC_Photo" id="SSC_Photo" class="form-control" />
+                </div>
+            </div>
+            <div class="row" id="LC" style="padding-left:15px; display:none;">
+                <div class="form-group col-md-10">
+                    <label>Original LC/TC <b><i>OR</i></b> Duplicate School leaving Certificate and its attested true copy with self attested Affidavit (Original):<span style="color: red">*</span></label>
+                    <input type="file" name="SSC_LC" id="SSC_LC" class="form-control" />
+                </div>
+            </div>
+            <div class="row" style="padding-left:15px">
+                <div id="Domicile" class="form-group col-md-6" style="display:none">
+                    <label>Domicile certificate :</label><span style="color: red">*</span>
+                    <input type="file" name="SSC_Domicile" id="SSC_Domicile" class="form-control" />
+                </div>
+            </div>
+            <div class="row" style="padding-left:15px">
+                <div id="HandicapLetter" class="form-group col-md-6" style="display:none">
+                    <label>Handicap Certificate :</label><span style="color: red">*</span>
+                    <input type="file" name="SSC_Handicap_Certificate" id="SSC_Handicap_Certificate" class="form-control col-md-3" />
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-left:15px; border-bottom:double; border-top:double;">
+            <div style="padding:15px">
+                <label for="ReadInstruction">
+                    <input type="checkbox" id="ReadInstruction" />
+                    I have carefully read the accompanying 'Instructions to Private Candidate'. I am prepared to select only such subjects as are allowed to be offered for the SSC Examination by Private candidates in Medium:<span style="color: red">*</span>
+                </label>
+            </div>
+            <div class="form-group col-md-3">
+                <select name="Selected_Language" id="Selected_Language" class="form-control" disabled>
+                    <option selected="selected" value="0">--SELECT--</option>
+                    <option value="Marathi">Marathi</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Urdu">Urdu</option>
+                    <option value="Gujarati">Gujarati</option>
+                    <option value="Sindhi">Sindhi</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="padding:15px">
+            <ul style="color:red">
+                <li>खाजगी विद्यार्थी नावनोंदणी  अर्ज (FORM 17) ऑनलाइन पद्धतीने शुल्क जमा केल्यानंतर विद्यार्थ्याला पोचपावती प्राप्त होईल सादर पोचपावती स्वतः जवळ जतन करून ठेवण्यात यावी.</li>
+                <li>एकदा नावनोंदणी अर्ज सादर केल्या नंतर कोणत्याही कारणास्तव नावनोंदणी शुल्क विद्यार्थ्याला परत केले जाणार नाही .तसेच नावनोंदणी अर्जात दूरस्ती करावयाचे असल्यास विद्यार्थ्यास पुनःश्च अर्ज सादर करून नाव नोंदणी शुल्क जमा करावे लागेल याची विद्यार्थ्याने नोंद घ्यावी.</li>
+                <li>Payment success झाल्यास व तांत्रिक कारणास्तव पोचपावती न भेटल्यास दुबार payment करू नये,केलेल्या payment ची पावती २४ तासात सांकेतिक स्थळावर उपलब्ध होईल.</li>
+            </ul>
+        </div>
+        <div class="row" style="padding-top:5px;text-align:center;">
+            <div class="form-group col-md-12">
+                <input type="submit" name="btnSubmit" value="Submit" onclick="" id="btnSubmit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+@*<script src="~/Design/layout/scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Design/layout/scripts/jquery.validate.min.js"></script>
+    <script src="~/Design/layout/scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Design/Project.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('li').removeClass('active');
+        $($('#Application')).addClass(' active');
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if ($("#frm_form17").valid()) {
+                var formData = new FormData($(frm_form17)[0]);
+                $.ajax({
+                    url: "../Validation/SSCForm17Validation",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function () {
+                        $("#frm_form17 :input").prop("disabled", true);
+                        $(".rounded").css("filter", "brightness(75%)");
+                        Showloader();
+                    },
+                    complete: function () {
+                        Hideloader();
+                        $("#frm_form17 :input").prop("disabled", false);
+                        $(".rounded").css("filter", "brightness(100%)");
+                    },
+                    success: function (Data) {
+                        if (Data.Result) {
+                            Confirm_Submit_SSCForm17(formData, Data.Dialog, Data.DialogDescription);
+                        }
+                        else {
+                            Error_Alert(Data.Message);
+                        }
+                    },
+                    error: function (e1, e2, e3) {
+                        Error_Alert(Data.Message);
+                    }
+                });
+            }
+            else {
+                $('.input-validation-error').filter(":first").focus()
+            }
+        });
+
+        $("#District").change(function () {
+            $("#Taluka").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getTalukaList")',
+                dataType: 'json',
+                data: { distCode: $("#District").val() },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                      $("#Taluka").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#District_of_Form_Submission").change(function () {
+            $("#Taluka_of_Form_Submission").empty();
+            if ($("#District_of_Form_Submission").val() != "0") {
+                $("#Taluka_of_Form_Submission").prop("disabled", false);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#District_of_Form_Submission").val() == 0) {
+                $("#Taluka_of_Form_Submission").prop("disabled", true);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            $("#Medium_of_Form").empty();
+            $("#Medium_of_Form").append('<option value="0">-Select Medium-</option>');
+            $("#School_of_Form_Submission").empty();
+            $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getTalukaList")',
+                dataType: 'json',
+                data: { distCode: $("#District_of_Form_Submission").val() },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Taluka_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#Taluka_of_Form_Submission").change(function () {
+            $("#Medium_of_Form").empty();
+            if ($("#Taluka_of_Form_Submission").val() != "0") {
+                $("#Medium_of_Form").prop("disabled", false)
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#Taluka_of_Form_Submission").val() == "0") {
+                $("#Medium_of_Form").prop("disabled", true)
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            $("#School_of_Form_Submission").empty();
+            $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getSSCMediumList")',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val()
+                },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Medium_of_Form").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#Medium_of_Form").change(function () {
+            $("#School_of_Form_Submission").empty();
+            if ($("#Medium_of_Form").val() != "0") {
+                $("#School_of_Form_Submission").prop("disabled", false  );
+            }
+            else if ($("#Medium_of_Form").val() == "0") {
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+             document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getSchoolList")',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val(),
+                    medium: $("#Medium_of_Form").val()
+                },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#School_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+         });
+
+        $("#School_of_Form_Submission").change(function () {
+            $("#Index_No_of_School").val($("#School_of_Form_Submission").val());
+            return false;
+        });
+
+        $("#State").change(function () {
+            var item = $(this);
+            if (item.val() != "0" && item.val() != "Maharashtra") {
+                $("#Domicile").show();
+            }
+            else {
+                $("#Domicile").hide();
+            }
+        });
+
+        $("#Whether_Handicap").change(function () {
+            var item = $(this);
+            if (item.val() == "Yes") {
+                $("#HandicapCategory").show();
+                $("#Handicap_Category")[0].selectedIndex = 0;
+                $("#HandicapLetter").show();
+            }
+            else {
+                $("#HandicapCategory").hide();
+                $("#HandicapLetter").hide();
+                $("#Handicap_Category")[0].selectedIndex = 0;
+            }
+        });
+
+        $("#Declaration_Yes_No").change(function () {
+            var item = $(this);
+            if (item.val() == "Yes") {
+                $("#debarredYes").show();
+            }
+            else {
+                $("#debarredYes").hide();
+            }
+        });
+
+        $("#Leaving_Certificate_Yes_No").change(function () {
+            var item = $(this);
+            if (item.val() == "No") {
+                $("#Duplicate_Leaving_Certificate_Yes_No")[0].selectedIndex = 0;
+                $("#Duplicate_LC_Yes_No").show();
+                $("#LC").hide();
+            }
+            else if (item.val() == "Yes") {
+                $("#Duplicate_Leaving_Certificate_Yes_No")[0].selectedIndex = 0;
+                $("#Duplicate_LC_Yes_No").hide();
+                $("#LC").show();
+            }
+            else {
+                $("#Duplicate_Leaving_Certificate_Yes_No")[0].selectedIndex = 0;
+                $("#Duplicate_LC_Yes_No").hide();
+                $("#LC").hide();
+            }
+        });
+
+        $("#Duplicate_Leaving_Certificate_Yes_No").change(function () {
+            var item = $(this);
+            if ($("#Leaving_Certificate_Yes_No").val() == "No" && (($("#Duplicate_Leaving_Certificate_Yes_No").val() == "No") || ($("#Duplicate_Leaving_Certificate_Yes_No").val() == "0"))){
+                $("#LC").hide();
+            }
+            else {
+                $("#LC").show();
+            }
+        });
+        $("#ReadInstruction").click(function () {
+            if ($(this).is(":checked")) {
+                $("#Selected_Language").prop("disabled", false);
+            }
+            else {
+                $("#Selected_Language")[0].selectedIndex = 0;
+                $("#Selected_Language").prop("disabled", true);
+            }
+        });
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                autoSize: true,
+                yearRange: "1960:2022"
+            });
+        });
+    });
+
+    function Confirm_Submit_SSCForm17(formData, Dialog, DialogDescription) {
+        Swal.fire({
+            title: Dialog,
+            text: DialogDescription,
+            showCancelButton: true,
+            confirmButtonColor: '#30d633',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: '../Home/SSCForm17',
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (Data) {
+                        if (Data.Result) {
+                            Swal.fire({
+                                title: 'Please Wait',
+                                text: 'Redirecting to Payment...',
+                                showConfirmButton: false,
+                                allowOutsideClick: false,
+                                allowEscapeKey: false
+                            })
+                            window.location.replace(Data.RedirectURL);
+                        }
+                        else {
+                            Error_Alert(Data.Message);
+                        }
+                    },
+                    error: function (e1, e2, e3) {
+                        Error_Alert(Data.Message);
+                    }
+                })
+            }
+        })
+    }
+</script>

@@ -1,0 +1,414 @@
+﻿@model Form17.Models.UpdateSchoolByDivisionModel
+@{
+    ViewBag.Title = "EditSSCDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="frmupdatedetails">
+    @Html.AntiForgeryToken()
+    <div class="row" style="border-bottom:double; padding:15px">
+        <div class="col-sm-3">
+            <label>Enter Application No:</label><span style="color: red">*</span>
+            @Html.EditorFor(model => model.Application_No, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div class="col-sm-3" style="padding-top:25px">
+            <input type="button" id="btnSearch" value="Submit" />
+        </div>
+    </div>
+    <div class="row step2" style="padding:15px; display: none; border-bottom: double">
+        <div class="form-group col-md-3">
+            <label for="Last_Name">Last Name:</label><span style="color: red">*</span>
+            @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control " } })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="First_Name"> First Name:</label><span style="color: red">*</span>
+            @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control " } })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="Father_Husband_Name"> Father / Husband Name:</label><span style="color: red">*</span>
+            @Html.EditorFor(model => model.Father_Husband_Name, new { htmlAttributes = new { @class = "form-control " } })
+        </div>
+    </div>
+    <div class="row step2" style="padding:15px;display: none;">
+        <div class="form-group col-md-3">
+            <label for="District_of_Form_Submission">(1)District:</label><span style="color: red">*</span>
+            @Html.DropDownListFor(model => model.District_of_Form_Submission, ViewBag.DistrictList as SelectList, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="Taluka_of_Form_Submission">(2)Taluka:</label><span style="color: red;">*</span>
+            @Html.DropDownListFor(model => model.Taluka_of_Form_Submission, new SelectList(string.Empty, "Value", "Text"), "-Select Taluka-", new { @class = "form-control" })
+
+        </div>        
+        <div class="form-group col-md-3">
+            <label for="Medium_of_Form">(4)Medium:</label><span style="color: red">*</span>
+            @Html.DropDownListFor(model => model.Medium_of_Form, new SelectList(string.Empty, "Value", "Text"), "-Select Medium-", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row step2" style="padding: 15px; display: none; ">
+        <div class="form-group col-md-9">
+            <label for="School_of_Form_Submission">(5)Select College:</label><span style="color: red">*</span>
+            @Html.DropDownListFor(model => model.School_of_Form_Submission, new SelectList(string.Empty, "Value", "Text"), "-Select College-", new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="Index_No_of_School">School Index :</label>
+            <input name="Index_No_of_School" type="text" readonly="readonly" id="Index_No_of_School" class="form-control" />
+        </div>
+    </div>
+    <div class="row step2" style="padding-top:5px;text-align:center; display: none; ">
+        <div class="form-group col-md-12">
+            <input type="button" name="btnSubmit" value="Submit" id="btnSubmit" class="btn btn-primary" />
+        </div>
+    </div>
+    <input type="hidden" id="hf_taluka" value="0" />
+    <input type="hidden" id="hf_medium" value="0" />
+    <input type="hidden" id="hf_school" value="0" />
+</form>
+
+<script>
+    $(document).ready(function () {
+        $('li').removeClass('active');
+        $($('#edit')).addClass(' active');
+        $('#btnSubmit').click(function () {
+            var formData = new FormData($(frmupdatedetails)[0]);
+            $.ajax({
+                url: '../Division/SchoolUpdateByDivision',
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    $("#frmupdatedetails :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frmupdatedetails :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    debugger;
+                    console.log(Data);
+                    if (Data.Result) {
+                        Success_Alert(Data.Message);
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    //Error_Alert(Data.Message);
+                }
+            });
+            return false;
+        });
+
+        $('#btnSearch').click(function () {
+            $.ajax({
+                url: '../Division/IsAlreadySchoolUpdatedByDivision',
+                type: "POST",
+                data: {
+                    application: $('#Application_No').val()
+                },
+                beforeSend: function () {
+                    $("#frmupdatedetails :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frmupdatedetails :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    console.log(Data);
+                    if (Data.Result) {
+                        $('.step2').show();
+                        $('#Last_Name').val(Data.data.Last_Name);
+                        $('#First_Name').val(Data.data.First_Name);
+                        $('#Father_Husband_Name').val(Data.data.Father_Husband_Name);
+                        $('#District_of_Form_Submission').val(Data.data.District_of_Form_Submission);
+                        $('#hf_taluka').val(Data.data.Taluka_of_Form_Submission);
+                        $('#hf_medium').val(Data.data.Medium_of_Form);
+                        $('#hf_school').val(Data.data.School_of_Form_Submission);
+                        $('#hf_school').val(Data.data.Index_No_of_School);
+                        District_Change();
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                        $('.step2').hide();
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    //Error_Alert(Data.Message);
+                }
+            });
+            return false;
+        });
+
+        $("#District_of_Form_Submission").change(function () {
+            $("#Taluka_of_Form_Submission").empty();
+            if ($("#District_of_Form_Submission").val() != "0") {
+                $("#Taluka_of_Form_Submission").prop("disabled", false);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#District_of_Form_Submission").val() == 0) {
+                $("#Taluka_of_Form_Submission").prop("disabled", true);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            $("#Medium_of_Form").empty();
+            $("#Medium_of_Form").append('<option value="0">-Select Medium-</option>');
+            $("#School_of_Form_Submission").empty();
+            $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '../Home/getTalukaList',
+                dataType: 'json',
+                data: { distCode: $("#District_of_Form_Submission").val() },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Taluka_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#Taluka_of_Form_Submission").change(function () {
+            $("#Medium_of_Form").empty();
+            if ($("#Taluka_of_Form_Submission").val() != "0") {
+                $("#Medium_of_Form").prop("disabled", false)
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#Taluka_of_Form_Submission").val() == "0") {
+                $("#Medium_of_Form").prop("disabled", true)
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            $("#School_of_Form_Submission").empty();
+            $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '../Home/getSSCMediumList',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val()
+                },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Medium_of_Form").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#Medium_of_Form").change(function () {
+            $("#School_of_Form_Submission").empty();
+            if ($("#Medium_of_Form").val() != "0") {
+                $("#School_of_Form_Submission").prop("disabled", false  );
+            }
+            else if ($("#Medium_of_Form").val() == "0") {
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '../Home/getSchoolList',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val(),
+                    medium: $("#Medium_of_Form").val()
+                },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#School_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+         });
+
+        $("#School_of_Form_Submission").change(function () {
+            $("#Index_No_of_School").val($("#School_of_Form_Submission").val());
+            return false;
+        });
+
+        function District_Change() {
+            $("#Taluka_of_Form_Submission").empty();
+            if ($("#District_of_Form_Submission").val() != "0") {
+                $("#Taluka_of_Form_Submission").prop("disabled", false);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#District_of_Form_Submission").val() == 0) {
+                $("#Taluka_of_Form_Submission").prop("disabled", true);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            $("#Medium_of_Form").empty();
+            $("#Medium_of_Form").append('<option value="0">-Select Medium-</option>');
+            $("#School_of_Form_Submission").empty();
+            $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '../Home/getTalukaList',
+                dataType: 'json',
+                data: { distCode: $("#District_of_Form_Submission").val() },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Taluka_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                    $("#Taluka_of_Form_Submission").val($('#hf_taluka').val());
+                    Taluka_Change();
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        }
+
+        function Taluka_Change() {
+            $("#Medium_of_Form").empty();
+            if ($("#Taluka_of_Form_Submission").val() != "0") {
+                $("#Medium_of_Form").prop("disabled", false)
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#Taluka_of_Form_Submission").val() == "0") {
+                $("#Medium_of_Form").prop("disabled", true)
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            $("#School_of_Form_Submission").empty();
+            $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '../Home/getSSCMediumList',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val()
+                },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Medium_of_Form").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                    $("#Medium_of_Form").val($('#hf_medium').val());
+                    Medium_Change();
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        }
+
+        function Medium_Change() {
+            $("#School_of_Form_Submission").empty();
+            if ($("#Medium_of_Form").val() != "0") {
+                $("#School_of_Form_Submission").prop("disabled", false);
+            }
+            else if ($("#Medium_of_Form").val() == "0") {
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '../Home/getSchoolListForDivision',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val(),
+                    medium: $("#Medium_of_Form").val()
+                },
+                beforeSend: function () {
+                    $("#frm_form17 :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frm_form17 :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#School_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                    $("#School_of_Form_Submission").val($('#hf_school').val());
+                    $("#Index_No_of_School").val($('#hf_school').val());
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        }
+    });
+</script>

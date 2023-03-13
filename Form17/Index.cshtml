@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    table{
+    border-collapse: separate;
+    text-indent: initial;
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: medium;
+    font-style: normal;
+    text-align: start;
+    border-spacing: 0px;
+    font-variant: normal;
+    }
+    th {
+        background-color: #55abda;
+    }
+</style>
+<div class="g-ytsubscribe" data-channelid="UC5mMk6zyuKrYIeZhsNaJ8_w" data-layout="full" data-theme="dark" data-count="default"></div>
+<div class="container" style="text-align:center">
+    <strong>
+        @*<a href="#"> Click here to download Enrollment Certificate  </a><br />*@
+        @*<%--<asp:Label ID="Label10" runat="server" ForeColor="Red"> तांत्रिक अडचणी साठी संपर्क ( ONLINE अर्ज भरण्यात काही अडचण आल्यास) 020-25676405 </asp:Label><br />
+            <p style="font-weight: 700; color: red">अर्ज  करण्याची  मुदत  संपलेली आहे. याची विध्यार्थ्यानी  नोंद घ्यावी. इतर तपशीलासाठी विभागीय मंडळाशी संपर्क करावा. </p>--%>
+
+            <%-- <asp:Label ID="Label2" runat="server" ForeColor="Red"> खाजगी विद्यार्थी नावनोंदणी  अर्ज (FORM 17) (२०२०-२१) ची  दिनांक ९/०४/२०२१ ते दिनांक ११/०४/२०२१  विलंब शुल्क रु.२५/- व अतिविलंब शुल्क प्रती विद्यार्थी रु.२०/-  प्रतिदिन स्विकारून मुदतवाढ देण्यात येत आहे.याची सर्व विद्यार्थ्यानी नोंद घ्यावी. </asp:Label><br />
+
+            <asp:Label ID="Label3" runat="server" ForeColor="Red"> खाजगी विद्यार्थी नावनोंदणी  अर्ज (FORM 17) ऑनलाइन  पद्धतीने शुल्क जमा केल्यानंतर विद्यार्थ्याला पोचपावती प्राप्त होईल सादर पोचपावती स्वतः जवळ जतन करून ठेवण्यात यावी </asp:Label><br />
+            <asp:Label ID="Label7" runat="server" ForeColor="Red"> एकदा नावनोंदणी अर्ज सादर केल्या नंतर कोणत्याही कारणास्तव नावनोंदणी शुल्क विद्यार्थ्याला परत केले जाणार नाही .तसेच नावनोंदणी अर्जात दूरस्ती करावयाचे असल्यास विद्यार्थ्यास पुनःश्च अर्ज सादर करून नाव नोंदणी शुल्क जमा करावे लागेल याची विद्यार्थ्याने नोंद घ्यावी.</asp:Label><br />
+            <asp:Label ID="Label8" runat="server" ForeColor="Red">     ऑनलाईन पद्धतीने (Debit Card/Credit 	Card/UPI/Net Banking) भरता  येईल </asp:Label><br />
+
+            <asp:Label ID="Label9" runat="server" ForeColor="Red">    Payment Success झाल्यास व तांत्रिक कारणास्तव पोचपावती न भेटल्यास दुबार payment करू नये,केलेल्या payment ची पावती  २४ तासात सांकेतिक स्थळावर उपलब्ध होईल. </asp:Label><br />
+            --%>
+            <%--  <p style="font-weight: 700">Enrollment Certificate ( खाजगी नावनोंदणी प्रमाणपत्र ) download केल्यानंतर कार्यकालीन २४ तासानंतर आवेदन पत्र भरण्यात यावे याची विदयार्थ्याने नोंद घ्यावी .</p>
+
+
+
+            <%--       <p>   <asp:Label ID="Label2" runat="server" Text=" अतिविलंब शुल्कानुसार अर्ज क्रमांक १७ द्वारे माध्यमिक शालांत प्रमाणपत्र परीक्षेसाठी प्रविष्ठ होण्यासाठी नोंदणी करणाऱ्या खाजगी विद्यार्थ्यानी पुढील सूचना वाचून अर्ज भरण्यास सुरवात करावी." style="font-weight: 700"></asp:Label></p>--%>
+
+            <%--<p>  <asp:Label ID="Label7" runat="server" Text="अतिविलंब शुल्क प्रती विद्यार्थी रुपये २०/- प्रतिदिन स्वीकारून अर्ज क्रमांक १७ ची सुरवात १४ डिसेंबर २०१९ ते २० डिसेंबर २०१९  पर्यंत आहे. इतर तपशीलासाठी विभागीय मंडळाशी संपर्क करावा." style="font-weight: 700"></asp:Label></p>--%>
+            <%-- <p>    <asp:Label ID="Label4" runat="server" Text="१) आपले आधार कार्ड ,शाळा सोडल्याचा दाखला(द्वितीय प्रत असल्यास प्रतिज्ञापत्र) अधिवास /स्थलांतर दाखला,फोटो आपल्या सोबत ठेवा." style="font-weight: 700;"></asp:Label><br /></p>
+            <p>    <asp:Label ID="lbl1" runat="server" Text="२) SECTION 2/2 मध्ये या प्रमाणपत्रांना SCAN करून UPLOAD करावयाचे आहे.(pdf,jpg,jpeg format only, file size 256kb पेक्षा कमी असावी )" style="font-weight: 700;"></asp:Label><br /></p>
+            <p> <asp:Label ID="Label5" runat="server" Text="३) माहिती भरलेल्या अर्जाची PRINT काढून तो आपल्या अर्जात नमुद केलेल्या शाळेत  जमा करावयाचा आहे." style="font-weight: 700;"></asp:Label>  <br />  </p>
+            p> <asp:Label ID="Label6" runat="server" Text="४) विद्यार्थ्याचा मोबाईल क्रमांक व ई-मेल आयडी पुढील संपर्कासाठी अनिवार्य आहे." style="font-weight: 700; "></asp:Label>  <br /> </p>
+            <%--  <p>
+                ५) तांत्रिक अडचणी साठी संपर्क ( ONLINE अर्ज भरण्यात काही अडचण आल्यास) 020-25705208 / 25705207  (सकाळी १०:०० ते  सायंकाळी ०६:०० पर्यंत)
+                <br />
+                इतर अडचणी साठी  020-25705272 (सकाळी १०:०० ते  सायंकाळी ०६:०० पर्यंत)
+            </p>--%>*@
+    </strong>
+    <p style="font-weight: 700; color: red; text-align:center;">अर्ज  करण्याची  मुदत  संपलेली आहे. याची विध्यार्थ्यानी  नोंद घ्यावी. इतर तपशीलासाठी विभागीय मंडळाशी संपर्क करावा. </p>
+</div>
+<a class="col-sm-offset-5 col-sm-3" style="padding-left:50px; font-size:large" href="https://www.youtube.com/watch?v=QKrYFscnQmI">How to apply ?</a>
+<br />
+<div>
+    <table style="border: solid 2px; border-color: black; margin:auto">        
+        <tr>
+            <th>
+                विभागीय मंडळ
+            </th>
+            <th>
+                संपर्क क्रमांक
+            </th>
+        </tr>
+        <tr>
+            <td>
+                पुणे विभागीय मंडळ
+            </td>
+            <td>
+                ०२०.... २५५३६७८१,०२०..... २५५३६७८२,०२०..... २५५३६७८३
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                नागपूर विभागीय मंडळ
+            </td>
+            <td>
+                ०७१२ ....२५५३४०१,
+                ०७१२ ....२५५३४०३
+
+
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                औरंगाबाद विभागीय मंडळ
+            </td>
+            <td>
+                ०२४० ....२३३४२२८,
+                ०२४० ....२३३२८८४
+
+
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                मुंबई विभागीय मंडळ
+            </td>
+            <td>
+                ०२२….२७८८१०७५,
+                ०२२ ....२७८८१०७७
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                कोल्हापूर विभागीय मंडळ
+            </td>
+            <td>
+                ०२३१...२६९६१०१,
+                ०२३१...२६९६१०२,
+                ०२३१...२६९६१०३
+            </td>
+        </tr>
+        <tr>
+            <td>
+                अमरावती विभागीय मंडळ
+            </td>
+            <td>
+                ०७२१...२६६२६४७ ,
+                ०७२१...२६६२६७८
+
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                नाशिक विभागीय मंडळ
+            </td>
+            <td>
+                ०२५३...२५९२१४१,
+                ०२५३...२५९२१४२
+
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                लातूर विभागीय मंडळ
+            </td>
+            <td>
+                ०२३८२...२५८२४१
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                कोकण विभागीय
+                मंडळ.
+            </td>
+            <td>
+                ०२३५२...२२८४८०
+
+            </td>
+        </tr>
+
+        @*<tr>
+            <td>
+                अर्ज करताना तांत्रिक अडचण असल्यास (For Technical Queries Only )
+            </td>
+            <td>
+                ०२०.....२५७०५२०७ 
+                <asp:Label ID="num" runat="server" ForeColor="Black">  </asp:Label>
+            </td>
+        </tr>*@
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('li').removeClass('active');
+        $($('#Index')).addClass(' active');
+    });
+</script>

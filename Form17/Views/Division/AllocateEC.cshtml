@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "AllocateEC";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="allocateEC">
+    <div class="row" style="border-bottom:double; padding-bottom:15px">
+        <div class="col-sm-3">
+            <label>Select Standard:</label>
+            <select id="std" name="std" class="form-control">
+                <option value="0">--Select Standard--</option>
+                <option value="SSC">SSC</option>
+                <option value="HSC">HSC</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <label>Enter Application No</label>
+            <input type="text" name="applicationno" id="applicationno" class="form-control" maxlength="7"/>
+        </div>
+        <div style="padding-top:22px">
+            <input type="button" id="btnSearch" value="Search" class="btn btn-primary"/>
+        </div>
+    </div>
+    <div class="row" id="step2" style="display:none; padding:15px">
+        <div class="col-sm-5">
+            <label>Student Name :</label>
+            <label id="name"></label>
+        </div>
+        <div class="col-sm-3">
+            <label>EC Generated ? : </label>
+            <label id="ecstatus"></label>
+        </div>
+        <div class="col-sm-2">
+            <label>EC No : </label>
+            <label id="ecno"></label>
+        </div>
+        <div class="col-sm-2" id="allocatebutton">
+            <input type="button" id="btnAllocate" value ="Allocate EC" class ="btn btn-primary"style="display:none"/>
+        </div>
+    </div>
+    <div class="row" id="step3" style="display:none;padding:15px">
+        <div class="col-sm-3">
+            <label>Enter OTP of the Day.</label>
+            <input type="text" class="form-control" name="otp" id="otp" maxlength="4" />
+        </div>
+        <div class="col-sm-3" style="padding-top:22px">
+            <input type="button" value="verify and allocate EC" id="btnVerify" class="btn btn-primary" />
+        </div>
+        <div class="col-sm-3" style="padding-top:22px">
+            <input type="button" value="Resend OTP" id="btnResend" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('li').removeClass('active');
+        $($('#allocateec')).addClass(' active');
+        $('#btnSearch').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getECDetails")',
+                dataType: 'json',
+                data: {
+                    std:$('#std').val(),
+                    formno: $("#applicationno").val()
+                },
+                beforeSend: function () {
+                    $("#allocateEC :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#allocateEC :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+                        $('#name').html("" + Data.data.First_Name + " " + Data.data.Father_Husband_Name + " " + Data.data.Last_Name);
+                        var EC_Status = Data.data.EC_Status == null ? "No" : "Yes";
+                        $('#ecstatus').html(String(EC_Status));
+                        var Ec_No = Data.data.EC_Code == null ? "NA" : Data.data.EC_Code;
+                        $('#ecno').html(String(Ec_No));
+                        if (Data.data.EC_Code == null) {
+                            $('#btnAllocate').show();
+                        }
+                        else {
+                            $('#btnAllocate').hide();
+                        }
+                        $('#step2').show();
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        })
+
+        $('#btnAllocate').click(function () {
+            $('#step3').show();
+        })
+        $('#btnResend').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ResendOTP")',
+                dataType: 'json',
+                data: {
+                },
+                beforeSend: function () {
+                    $("#allocateEC :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#allocateEC :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+                        Success_Alert(Data.Message);
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        })
+
+        $('#btnVerify').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("VerifyOTPAndAllocateEC")',
+                dataType: 'json',
+                data: {
+                    otp: $('#otp').val(),
+                    std: $('#std').val(),
+                    formno: $('#applicationno').val()
+                },
+                beforeSend: function () {
+                    $("#allocateEC :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#allocateEC :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+                        alert(Data.Message);
+                        window.location.replace(Data.RedirectURL);
+                    }
+                    else {
+                        alert(Data.Message);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        })
+    });
+</script>

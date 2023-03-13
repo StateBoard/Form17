@@ -1,0 +1,1113 @@
+﻿@model Form17.Models.HSC_Form17_Model
+@{
+    ViewBag.Title = "HSCForm17";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form id="frm_form17">
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div style="text-align:center">
+            <strong>
+                <span id="ContentPlaceHolder1_Label2" style="color:Black"> Application for Direct Enrollment as a Private candidate at the HSC Examination of @ViewBag.MonthYearofExam </span>
+            </strong>
+        </div>
+        <div class="row" style="padding:15px;  border-bottom: double;">
+            <div class="form-group col-md-12">
+                <strong>
+                    <span>To,</span><br />
+                    <span>
+                        Maharashtra State Board of Secondary <br /> & Higher Secondary Education,<br />
+                        Divisional Board
+                    </span>
+                </strong>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" style="font-weight: 700; font-size: medium;padding-left:30px ;color: #FF0000;">
+                    <p>Fields marked with '*' are comulsory to be filled.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="form-group col-md-3">
+                <label>(1) Personal Details</label>
+            </div>
+        </div>
+        <div class="row" style="padding:15px; padding-bottom:0px">
+            <div class="form-group col-md-3">
+                <label for="Last_Name">Last Name:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="First_Name"> First Name:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Father_Husband_Name"> Father / Husband Name:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Father_Husband_Name, new { htmlAttributes = new { @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.Father_Husband_Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Mother_Name">Mother Name:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Mother_Name, new { htmlAttributes = new { @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.Mother_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row" style="padding-bottom:15px; padding-left:15px; border-bottom: double;">
+            <div class="col-md-3">
+                <label for="Gender">Gender: </label><span style="color: red">*</span>
+                <select name="Gender" id="Gender" class="form-control">
+                    <option value="0">--SELECT--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row" style="padding:10px;">
+            <div class="form-group col-md-5">
+                <label for="Residential_Address">(2) Residential Address</label><span style="color: red">*</span>
+                @Html.TextAreaFor(model => model.Residential_Address, new { rows = "3", cols = "40", @style = "height:60px; width:100%", htmlAttributes = new { @class = "form-control col-md-5" } })
+                @Html.ValidationMessageFor(model => model.Residential_Address, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Pincode">Pincode:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control", maxLength = 6 } })
+                @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row" style="padding:5px; padding-left:10px; border-bottom:double">
+            <div class="form-group col-md-3">
+                <label for="District">District:</label><span style="color: red">*</span>
+                @Html.DropDownListFor(model => model.District, ViewBag.DistrictList as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Taluka">Taluka: </label><span style="color: red">*</span>
+                @Html.DropDownListFor(model => model.Taluka, new SelectList(string.Empty, "Value", "Text"), "-Select Taluka-", new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="State"> State:</label><span style="color: red">*</span>
+                <select name="State" id="State" class="form-control">
+                    <option value="0">-Select State-</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttaranchal">Uttaranchal</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Madya Pradesh">Madya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Orissa">Orissa</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Andaman and Nicobar Islands ">Andaman and Nicobar Islands </option>
+                    <option value="Chandigarh ">Chandigarh </option>
+                    <option value="Dadar and Nagar Haveli ">Dadar and Nagar Haveli </option>
+                    <option value="Daman and Diu">Daman and Diu </option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Lakshadeep">Lakshadeep</option>
+                    <option value="Pondicherry">Pondicherry</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="form-group col-md-3">
+                <label for="Contact">(3) Contact Details:</label>
+            </div>
+        </div>
+        <div class="row" style="padding:15px; padding-bottom:5px; border-bottom: double;">
+            <div class="form-group col-md-3">
+                <label for="Aadhar_No">Aadhar No:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Aadhar_No, new { htmlAttributes = new { @class = "form-control", maxLength = 12 } })
+                @Html.ValidationMessageFor(model => model.Aadhar_No, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Mobile_No">Mobile No:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Mobile_No, new { htmlAttributes = new { @class = "form-control", maxLength = 10 } })
+                @Html.ValidationMessageFor(model => model.Mobile_No, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Email_ID">Email Id:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Email_ID, new { htmlAttributes = new { @class = "form-control", placeholder = "example@example.com", maxLength = 200 } })
+                @Html.ValidationMessageFor(model => model.Email_ID, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <span id="ContentPlaceHolder1_lblemailmsg" style="color:Red;">( एक ईमेल आयडी एका विद्यार्थ्यासाठी च वैध राहील.एका ईमेल आयडीने पुन्हा नोंदणी करता येणार नाही.पुन्हा अर्ज करत असताना नवीन ईमेल आयडीचा वापर करावा.)</span>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="form-group col-md-3">
+                <label for="Birth">(4) Birth Details:</label>
+            </div>
+        </div>
+        <div class="row" style="padding:15px">
+            <div class="form-group col-md-6">
+                <label for="DOB"> Date of birth according to Christian Era :</label><span style="color: red">*</span>
+                <input name="DOB" type="text" placeholder="dd/mm/yyyy" id="DOB" readonly="readonly" style="width:200px" class="form-control datepicker" autocomplete="off" />
+            </div>
+        </div>
+        <div class="row" style="padding:15px;  padding-bottom:5px; border-bottom: double;">
+            <div class="form-group col-md-3">
+                <label for="Village_of_Birth">Village/Town of birth:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Village_of_Birth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Village_of_Birth, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Taluka_of_Birth">Taluka of birth:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Taluka_of_Birth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Taluka_of_Birth, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="District_of_Birth">District of birth:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.District_of_Birth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.District_of_Birth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="padding-top:10px;">
+            <div class="form-group col-9  col-md-4">
+                <label for="Year_Month">(5) Year and month of passing S.S.C Exam:</label>
+            </div>
+        </div>
+
+        <div class="row" style="padding:15px;  border-bottom: double;">
+            <div class="form-group col-md-3">
+                <label for="SSC_Passing_Month">Month:</label><span style="color: red">*</span>
+                <select name="SSC_Passing_Month" id="SSC_Passing_Month" class="form-control">
+                    <option value="0">--SELECT--</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="SSC_Passing_Year">Year:</label><span style="color: red">*</span>
+                <select name="SSC_Passing_Year" id="SSC_Passing_Year" class="form-control">
+                    <option value="0">--SELECT--</option>
+                    <option value="1955">1955</option>
+                    <option value="1956">1956</option>
+                    <option value="1957">1957</option>
+                    <option value="1958">1958</option>
+                    <option value="1959">1959</option>
+                    <option value="1960">1960</option>
+                    <option value="1961">1961</option>
+                    <option value="1962">1962</option>
+                    <option value="1963">1963</option>
+                    <option value="1964">1964</option>
+                    <option value="1965">1965</option>
+                    <option value="1966">1966</option>
+                    <option value="1967">1967</option>
+                    <option value="1968">1968</option>
+                    <option value="1969">1969</option>
+                    <option value="1970">1970</option>
+                    <option value="1971">1971</option>
+                    <option value="1972">1972</option>
+                    <option value="1973">1973</option>
+                    <option value="1974">1974</option>
+                    <option value="1975">1975</option>
+                    <option value="1976">1976</option>
+                    <option value="1977">1977</option>
+                    <option value="1978">1978</option>
+                    <option value="1979">1979</option>
+                    <option value="1980">1980</option>
+                    <option value="1981">1981</option>
+                    <option value="1982">1982</option>
+                    <option value="1983">1983</option>
+                    <option value="1984">1984</option>
+                    <option value="1985">1985</option>
+                    <option value="1986">1986</option>
+                    <option value="1987">1987</option>
+                    <option value="1988">1988</option>
+                    <option value="1989">1989</option>
+                    <option value="1990">1990</option>
+                    <option value="1991">1991</option>
+                    <option value="1992">1992</option>
+                    <option value="1993">1993</option>
+                    <option value="1994">1994</option>
+                    <option value="1995">1995</option>
+                    <option value="1996">1996</option>
+                    <option value="1997">1997</option>
+                    <option value="1998">1998</option>
+                    <option value="1999">1999</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                    <option value="2005">2005</option>
+                    <option value="2006">2006</option>
+                    <option value="2007">2007</option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="form-group col-9  col-md-5">
+                <label for="SSC_Division_Board">(6) Name of the Examination Board or University:</label>
+            </div>
+        </div>
+        <div class="row" style="padding:15px;  border-bottom: double;">
+            <div class="form-group col-md-3">
+                <label for="DivBoard">Select Division Board:</label><span style="color: red">*</span>
+                <select name="SSC_Division_Board" id="SSC_Division_Board" class="form-control">
+                    <option value="0">--SELECT--</option>
+                    <option value="PUNE BOARD">PUNE BOARD</option>
+                    <option value="NAGPUR BOARD">NAGPUR BOARD</option>
+                    <option value="AURANGABAD BOARD">AURANGABAD BOARD</option>
+                    <option value="MUMBAI BOARD">MUMBAI BOARD</option>
+                    <option value="KOLHAPUR BOARD">KOLHAPUR BOARD</option>
+                    <option value="AMRAVATI BOARD">AMRAVATI BOARD</option>
+                    <option value="NASHIK BOARD">NASHIK BOARD</option>
+                    <option value="LATUR BOARD">LATUR BOARD</option>
+                    <option value="KOKAN BOARD">KOKAN BOARD</option>
+                    <option value="OTHER">OTHER</option>
+                </select>
+            </div>
+            <div id="Other_Board" class="form-group col-md-3" style="display:none">
+                <label for="sname">Other Board:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Other_SSC_Board, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="row" style="padding:15px; border-bottom: double;">
+            <div style="padding-top:18px; float:left">
+                <label for="Date_of_Leaving_Secondary_School">(7) Date of leaving the last attended secondary school: </label><span style="color: red">*</span>
+            </div>
+            <div style="padding:15px; float:left">
+                <input name="Date_of_Leaving_Secondary_School" type="text" placeholder="dd/mm/yyyy" id="Date_of_Leaving_Secondary_School" readonly="readonly" style="width:200px" class="form-control datepicker" autocomplete="off" />
+            </div>
+        </div>
+        <div class="row" style="padding:10px; margin-top:15px">
+            <div class="form-group col-md-5" @*style="float:left;margin-left:8px"*@>
+                <label for="Name_of_Secondary_School">(8) Name of last attended recognised Secondary School :</label><span style="color: red">*</span>
+                @Html.TextAreaFor(model => model.Name_of_Secondary_School, new { rows = "3", cols = "40", @style = "height:60px; width:100%", htmlAttributes = new { @class = "form-control col-md-4" } })
+                @Html.ValidationMessageFor(model => model.Name_of_Secondary_School, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_Index_No">
+                    School Index No:
+                </label>
+                @Html.EditorFor(model => model.Secondary_School_Index_No, new { htmlAttributes = new { @class = "form-control", maxLength = 7 } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_Index_No, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_Udise_No">
+                    School Udise No:
+                </label>
+                @Html.EditorFor(model => model.Secondary_School_Udise_No, new { htmlAttributes = new { @class = "form-control", maxLength = 11 } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_Udise_No, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row" style="padding:15px;  padding-bottom:5px; border-bottom: double;">
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_Village">Village/Town:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Secondary_School_Village, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_Village, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_Taluka">Taluka:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Secondary_School_Taluka, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_Taluka, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_District">District:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Secondary_School_District, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_District, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Secondary_School_State">State:</label><span style="color: red">*</span>
+                @Html.EditorFor(model => model.Secondary_School_State, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Secondary_School_State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="padding:15px; border-bottom: double;">
+            <div style="padding-top:18px; float:left">
+                <label for="Date_of_Leaving_Junior_College">(9) Have you attended junior college ? (Yes/No):</label>
+                <span style="color: red">*</span>
+            </div>
+            <div style="padding:15px; float:left">
+                <select name="Attended_Junior_College_Yes_No" id="Attended_Junior_College_Yes_No" class="form-control">
+                    <option selected="selected" value="0">--SELECT--</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </div>
+        <div id="JCDate" class="row" style="padding:15px; border-bottom: inset; display:none;">
+            <div style="padding-top:18px; float:left">
+                <label for="Date_of_Leaving_Junior_College">9(A) Date of leaving the last attended junior college: </label>
+                <span style="color: red">*</span>
+            </div>
+            <div style="padding:15px; float:left">
+                <input name="Date_of_Leaving_Junior_College" type="text" placeholder="dd/mm/yyyy" id="Date_of_Leaving_Junior_College" readonly="readonly" style="width:200px" class="form-control datepicker" autocomplete="off" />
+            </div>
+        </div>
+        <div id="JCDetails1" class="row" style="padding:10px; margin-top:15px; display:none;">
+            <div class="form-group col-md-5" @*style="float:left;margin-left:8px*@>
+                <label for="Name_of_Junior_College">9(B) Name of last attended recognised junior college:</label>
+                <span style="color: red">*</span>
+                @Html.TextAreaFor(model => model.Name_of_Junior_College, new { rows = "3", cols = "40", @style = "height:60px; width:100%", htmlAttributes = new { @class = "form-control col-md-4" } })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Junior_College_Index_No">
+                    Junior College Index No:
+                </label>
+                @Html.EditorFor(model => model.Junior_College_Index_No, new { htmlAttributes = new { @class = "form-control", maxLength = 7 } })
+                @Html.ValidationMessageFor(model => model.Junior_College_Index_No, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Junior_College_Udise_No">
+                    Junior College Udise No:
+                </label>
+                @Html.EditorFor(model => model.Junior_College_Udise_No, new { htmlAttributes = new { @class = "form-control", maxLength = 11 } })
+                @Html.ValidationMessageFor(model => model.Junior_College_Udise_No, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div id="JCDetails2" class="row" style="padding:15px;  padding-bottom:5px; border-bottom: inset; display:none;">
+            <div class="form-group col-md-3">
+                <label for="Junior_College_Village">Village/Town of Junior College:</label><span style="color: red">*</span>
+                <input name="Junior_College_Village" type="text" id="Junior_College_Village" class="form-control" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Junior_College_District">District of Junior College:</label><span style="color: red">*</span>
+                <input name="Junior_College_District" type="text" id="Junior_College_District" class="form-control" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Junior_College_State">State of Junior College:</label><span style="color: red">*</span>
+                <input name="Junior_College_State" type="text" id="Junior_College_State" class="form-control" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Junior_College_Stream">Stream:</label><span style="color: red">*</span>
+                <select name="Junior_College_Stream" id="Junior_College_Stream" class="form-control">
+                    <option selected="selected" value="0">--SELECT--</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Commerce">Commerce</option>
+                    <option value="Science">Science</option>
+                </select>
+            </div>
+        </div>
+        <div id="JCPassMonth" class="row" style="padding:15px; padding-bottom:0px; margin-top:15px; display:none">
+            <div class="col-9">
+                <label for="month_year">9(C) The month and year of passing 1st year of junior college Examination :</label>
+            </div>
+            <div class="row" style="padding:15px; padding-left:20px; border-bottom:double">
+                <div class="form-group col-md-3">
+                    <label for="FYJC_Passing_Month">Month</label><span style="color: red">*</span>
+                    <select name="FYJC_Passing_Month" id="FYJC_Passing_Month" class="form-control">
+                        <option value="0">--SELECT--</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="Novmber">Novmber</option>
+                        <option value="December">December</option>
+                        <option value="NA">NA</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="FYJC_Passing_Year"> Year</label><span style="color: red">*</span>
+                    <select name="FYJC_Passing_Year" id="FYJC_Passing_Year" class="form-control">
+                        <option value="0">--SELECT--</option>
+                        <option value="1955">1955</option>
+                        <option value="1956">1956</option>
+                        <option value="1957">1957</option>
+                        <option value="1958">1958</option>
+                        <option value="1959">1959</option>
+                        <option value="1960">1960</option>
+                        <option value="1971">1971</option>
+                        <option value="1972">1972</option>
+                        <option value="1973">1973</option>
+                        <option value="1974">1974</option>
+                        <option value="1975">1975</option>
+                        <option value="1976">1976</option>
+                        <option value="1977">1977</option>
+                        <option value="1978">1978</option>
+                        <option value="1979">1979</option>
+                        <option value="1980">1980</option>
+                        <option value="1981">1981</option>
+                        <option value="1982">1982</option>
+                        <option value="1983">1983</option>
+                        <option value="1984">1984</option>
+                        <option value="1985">1985</option>
+                        <option value="1986">1986</option>
+                        <option value="1987">1987</option>
+                        <option value="1988">1988</option>
+                        <option value="1989">1989</option>
+                        <option value="1990">1990</option>
+                        <option value="1991">1991</option>
+                        <option value="1992">1992</option>
+                        <option value="1993">1993</option>
+                        <option value="1994">1994</option>
+                        <option value="1995">1995</option>
+                        <option value="1996">1996</option>
+                        <option value="1997">1997</option>
+                        <option value="1998">1998</option>
+                        <option value="1999">1999</option>
+                        <option value="2000">2000</option>
+                        <option value="2001">2001</option>
+                        <option value="2002">2002</option>
+                        <option value="2003">2003</option>
+                        <option value="2004">2004</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="NA">NA</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="FYJC_Passing_Status"> Status:</label><span style="color: red">*</span>
+                    <select name="FYJC_Passing_Status" id="FYJC_Passing_Status" class="form-control">
+                        <option value="0">--SELECT--</option>
+                        <option value="Pass">Pass</option>
+                        <option value="Fail">Fail</option>
+                        <option value="Studying">Studying</option>
+                        <option value="NA">NA</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding:15px;">
+            <div class="col-9">
+                <label for="center">(10) Select college where you want to submit application.</label>
+            </div>
+        </div>
+
+        <div class="row" style="padding:15px">
+            <div class="form-group col-md-3">
+                <label for="District_of_Form_Submission">(1)District:</label><span style="color: red">*</span>
+                @Html.DropDownListFor(model => model.District_of_Form_Submission, ViewBag.DistrictList as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Taluka_of_Form_Submission">(2)Taluka:</label><span style="color: red;">*</span>
+                @Html.DropDownListFor(model => model.Taluka_of_Form_Submission, new SelectList(string.Empty, "Value", "Text"), "-Select Taluka-", new { @class = "form-control", @disabled = "disable" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Stream_of_Form">(3)Stream:</label><span style="color: red">*</span>
+                @Html.DropDownListFor(model => model.Stream_of_Form, new SelectList(string.Empty, "Value", "Text"), "-Select Stream-", new { @class = "form-control", @disabled = "disable" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Medium_of_Form">(4)Medium:</label><span style="color: red">*</span>
+                @Html.DropDownListFor(model => model.Medium_of_Form, new SelectList(string.Empty, "Value", "Text"), "-Select Medium-", new { @class = "form-control", @disabled = "disable" })
+            </div>
+        </div>
+        <div class="row" style="padding: 15px; border-bottom: double;">
+            <div class="form-group col-md-9">
+                <label for="College_of_Form_Submission">(5)Select College:</label><span style="color: red">*</span>
+                @Html.DropDownListFor(model => model.College_of_Form_Submission, new SelectList(string.Empty, "Value", "Text"), "-Select College-", new { @class = "form-control", @disabled = "disable" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="College_Index_No">College Index :</label>
+                <input name="College_Index_No" type="text" readonly="readonly" id="College_Index_No" class="form-control" />
+            </div>
+        </div>
+        <div class="row" style="border-bottom:double; padding:15px">
+            <div class="row" style="padding:15px">
+                <div class="col-9">
+                    <label for="sname">(11) I here by declare that I have not been debarred from appearing at any of the examinations held by any examination board or university in india or by any other examination authority.</label>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Declaration_Yes_No">YES/NO:</label><span style="color: red">*</span>
+                    <select name="Declaration_Yes_No" id="Declaration_Yes_No" class="form-control">
+                        <option selected="selected" value="0">--SELECT--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" id="debarredYes" style="padding:15px; display:none">
+                <div class="form-group col-md-3">
+                    <label for="Name_of_Debarred_Board">Name of the Board /University:</label><span style="color: red">*</span>
+                    @Html.EditorFor(model => model.Name_of_Debarred_Board, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Exam_of_Debar">Name of the Examination :</label><span style="color: red">*</span>
+                    @Html.EditorFor(model => model.Exam_of_Debar, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Debarred_From_Year">Debarred period from(in Year):</label><span style="color: red">*</span>
+                    @Html.EditorFor(model => model.Debarred_From_Year, new { htmlAttributes = new { @class = "form-control", maxLength = 4, placeholder = "yyyy" } })
+                    @Html.ValidationMessageFor(model => model.Debarred_From_Year, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Debarred_To_Year">Debarred to (in Year): </label><span style="color: red">*</span>
+                    @Html.EditorFor(model => model.Debarred_To_Year, new { htmlAttributes = new { @class = "form-control", maxLength = 4, placeholder = "yyyy" } })
+                    @Html.ValidationMessageFor(model => model.Debarred_To_Year, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding:15px">
+            <div class="col-9">
+                <label for="sname">(12) I enclose documents below:</label>
+                <span style="color:red">[<b>Instruction -</b> Individual file size should not be more than 200 KB while uploading. Supported file type - jpeg/jpg/png]</span>
+            </div>
+        </div>
+        <div class="row" style="padding:15px;">
+            <div class="row" style="padding-left:15px;">
+                <div class="col-9">
+                    <label for="Secondary_School_Certificate_Yes_No">(A) Original Secondary School Certificate and Marksheet(s).</label>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Secondary_School_Certificate_Yes_No">YES/NO:</label><span style="color: red">*</span>
+                    <select name="Secondary_School_Certificate_Yes_No" id="Secondary_School_Certificate_Yes_No" class="form-control">
+                        <option selected="selected" value="0">--SELECT--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div id="jcollc" class="row" style="padding-left:15px">
+                <div class="col-9">
+                    <label for="FYJC_Leaving_Certificate_Yes_No">(B) Junior college Leaving Certificate.</label>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="FYJC_Leaving_Certificate_Yes_No">YES/NO:</label><span style="color: red">*</span>
+                    <select name="FYJC_Leaving_Certificate_Yes_No" id="FYJC_Leaving_Certificate_Yes_No" class="form-control">
+                        <option selected="selected" value="0">--SELECT--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="padding-left:15px;">
+                <div class="col-9">
+                    <label for="School_Leaving_Certificate_Yes_No">(C) Original School Leaving Certificate.</label>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="School_Leaving_Certificate_Yes_No">YES/NO:</label><span style="color: red">*</span>
+                    <select name="School_Leaving_Certificate_Yes_No" id="School_Leaving_Certificate_Yes_No" class="form-control">
+                        <option selected="selected" value="0">--SELECT--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div id="School_Leaving_Duplicate_Certificate_Yes_No" class="row" style="padding-left:15px;display:none;">
+                <div class="col-9">
+                    <label for="sname">
+                        (D) In case of duplicate School leaving certificate an affidavit to that effect of not joining any junior college after leaving the school
+                        /junior college last attended.
+                    </label>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="School_Leaving_Duplicate_Certificate_Yes_No">YES/NO:</label><span style="color: red">*</span>
+                    <select name="School_Leaving_Duplicate_Certificate_Yes_No" id="School_Leaving_Duplicate_Certificate_Yes_No" class="form-control">
+                        <option selected="selected" value="0">--SELECT--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" id="photo" style="padding:15px">
+                <div class="form-group col-md-3">
+                    <label>Passport Size photo:</label><span style="color: red">*</span>
+                    <br>
+                    <input type="file" name="HSC_Photo" id="HSC_Photo" class="form-control" />
+                </div>
+            </div>
+            <div class="row" id="Docs" style="padding:15px">
+                <div id="LC" class="form-group col-md-5">
+                    <label>Original LC/TC <b><i>OR</i></b> Duplicate School leaving Certificate and its attested true copy with self attested Affidavit (Original):<span style="color: red">*</span></label>
+                    <input type="file" name="HSC_School_LC" id="HSC_School_LC" class="form-control" />
+                </div>
+                <div id="Marksheet" class="form-group col-md-5">
+                    <label>Original/Duplicate Secondary School Certificate and Marksheet(s) and one Xerox copy or true copy of each of it attested by the principal:<span style="color: red">*</span></label>
+                    <input type="file" name="HSC_School_Marksheet" id="HSC_School_Marksheet" class="form-control" />
+                </div>
+            </div>
+            <div class="row" style="padding-left:15px">
+                <div id="JCLC" class="form-group col-md-6" style="display:none">
+                    <label>Junior college Leaving Certificate and its one Xerox copy or true copy attested by the principal:<span style="color: red">*</span></label>
+                    <input type="file" name="JCLC" id="JCLC" class="form-control" />
+                </div>
+            </div>
+            <div class="row" style="padding-left:15px">
+                <div id="Domicile" class="form-group col-md-6" style="display:none">
+                    <label>Domicile certificate :</label><span style="color: red">*</span>
+                    <input type="file" name="Domicile" id="Domicile" class="form-control" />
+                </div>
+            </div>
+            <div class="row" style="padding-left:15px">
+                <div id="HandicapLetter" class="form-group col-md-6" style="display:none">
+                    <label>Handicap Certificate :</label><span style="color: red">*</span>
+                    <input type="file" name="Handicap_Cerificate" id="Handicap_Cerificate" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-left:15px; border-bottom:double;  border-top:double;">
+            <div style="padding:15px">
+                <label for="ReadInstruction">
+                    <input type="checkbox" id="ReadInstruction" />
+                    I have carefully read the accompanying 'Instructions to Private Candidate'. I am prepared to select only such subjects as are allowed to be offered for the HSC Examination by Private candidates in Medium:<span style="color: red">*</span>
+                </label>
+            </div>
+            <div class="form-group col-md-3">
+                <select name="Selected_Language" id="Selected_Language" class="form-control" disabled>
+                    <option selected="selected" value="0">--SELECT--</option>
+                    <option value="Marathi">Marathi</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Urdu">Urdu</option>
+                    <option value="Gujarati">Gujarati</option>
+                    <option value="Sindhi">Sindhi</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="padding:15px">
+            <ul style="color:red">
+                <li>खाजगी विद्यार्थी नावनोंदणी  अर्ज (FORM 17) ऑनलाइन पद्धतीने शुल्क जमा केल्यानंतर विद्यार्थ्याला पोचपावती प्राप्त होईल सादर पोचपावती स्वतः जवळ जतन करून ठेवण्यात यावी.</li>
+                <li>एकदा नावनोंदणी अर्ज सादर केल्या नंतर कोणत्याही कारणास्तव नावनोंदणी शुल्क विद्यार्थ्याला परत केले जाणार नाही .तसेच नावनोंदणी अर्जात दूरस्ती करावयाचे असल्यास विद्यार्थ्यास पुनःश्च अर्ज सादर करून नाव नोंदणी शुल्क जमा करावे लागेल याची विद्यार्थ्याने नोंद घ्यावी.</li>
+                <li>Payment success झाल्यास व तांत्रिक कारणास्तव पोचपावती न भेटल्यास दुबार payment करू नये,केलेल्या payment ची पावती २४ तासात सांकेतिक स्थळावर उपलब्ध होईल.</li>
+            </ul>
+        </div>
+        <div class="row" style="padding-top:5px;text-align:center;">
+            <div class="form-group col-md-12">
+                <input type="submit" name="btnSubmit" value="Submit" id="btnSubmit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('li').removeClass('active');
+        $($('#Application')).addClass(' active');
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if ($("#frm_form17").valid()) {
+                var formData = new FormData($(frm_form17)[0]);
+                $.ajax({
+                    url: '../Validation/HSCForm17Validation',
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function () {
+                        $("#frm_form17 :input").prop("disabled", true);
+                        $(".rounded").css("filter", "brightness(75%)");
+                        Showloader();
+                    },
+                    complete: function () {
+                        Hideloader();
+                        $("#frm_form17 :input").prop("disabled", false);
+                        $(".rounded").css("filter", "brightness(100%)");
+                    },
+                    success: function (Data) {
+                        if (Data.Result) {
+                            Confirm_Submit_HSCForm17(formData, Data.Dialog, Data.DialogDescription);
+                        }
+                        else {
+                            Error_Alert(Data.Message);
+                        }
+                    },
+                    error: function (e1, e2, e3) {
+                        Error_Alert(Data.Message);
+                    }
+                });
+            }
+            else {
+                //$('.field-validation-error').hide(4000);
+                $('.input-validation-error').filter(":first").focus();
+            }
+        })
+
+        $("#Declaration_Yes_No").change(function () {
+            var item = $(this);
+            if (item.val() == "Yes") {
+                $("#debarredYes").show();
+            }
+            else {
+                $("#debarredYes").hide();
+            }
+        });
+        $("#SSC_Division_Board").change(function () {
+            var item = $(this);
+            if (item.val() == "OTHER") {
+                $("#Other_Board").show();
+            }
+            else {
+                $("#Other_Board").hide();
+            }
+        });
+        $("#Attended_Junior_College_Yes_No").change(function () {
+            var item = $(this);
+            if (item.val() == "Yes") {
+                $("#JCDate").show();
+                $("#JCDetails1").show();
+                $("#JCDetails2").show();
+                $("#JCPassMonth").show();
+            }
+            else {
+                $("#JCDate").hide();
+                $("#JCDetails1").hide();
+                $("#JCDetails2").hide();
+                $("#JCPassMonth").hide();
+            }
+        });
+        $("#School_Leaving_Certificate_Yes_No").change(function () {
+            var item = $(this);
+            if (item.val() == "No") {
+                $("#School_Leaving_Duplicate_Certificate_Yes_No").show();
+            }
+            else {
+                $("#School_Leaving_Duplicate_Certificate_Yes_No").hide();
+                $("#School_Leaving_Duplicate_Certificate_Yes_No")[0].selectedIndex = 0;
+            }
+        });
+
+        $("#District").change(function () {
+            $("#Taluka").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getTalukaList")',
+                dataType: 'json',
+                data: { distCode: $("#District").val() },
+		beforeSend: function () {
+                        $("#frm_form17 :input").prop("disabled", true);
+                        $(".rounded").css("filter", "brightness(75%)");
+                        Showloader();
+                    },
+                    complete: function () {
+                        Hideloader();
+                        $("#frm_form17 :input").prop("disabled", false);
+                        $(".rounded").css("filter", "brightness(100%)");
+                    },
+                success: function (Data) {
+                    for (var item in Data) {
+                      $("#Taluka").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#District_of_Form_Submission").change(function () {
+            $("#Taluka_of_Form_Submission").empty();
+            if ($("#District_of_Form_Submission").val() != "0") {
+                $("#Taluka_of_Form_Submission").prop("disabled", false);
+                $("#Stream_of_Form").prop("disabled", true);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#College_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#District_of_Form_Submission").val() == "0") {
+                $("#Taluka_of_Form_Submission").prop("disabled", true);
+                $("#Stream_of_Form").prop("disabled", true);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#College_of_Form_Submission").prop("disabled", true);
+            }
+            $("#Stream_of_Form").empty();
+            $("#Stream_of_Form").append('<option value="0">-Select Stream-</option>');
+            $("#Medium_of_Form").empty();
+            $("#Medium_of_Form").append('<option value="0">-Select Medium-</option>');
+            $("#College_of_Form_Submission").empty();
+            $("#College_of_Form_Submission").append('<option value="0">-Select College-</option>');
+            $("#College_Index_No").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getTalukaList")',
+                dataType: 'json',
+                data: { distCode: $("#District_of_Form_Submission").val() },
+		beforeSend: function () {
+                        $("#frm_form17 :input").prop("disabled", true);
+                        $(".rounded").css("filter", "brightness(75%)");
+                        Showloader();
+                    },
+                complete: function () {
+                        Hideloader();
+                        $("#frm_form17 :input").prop("disabled", false);
+                        $(".rounded").css("filter", "brightness(100%)");
+                    },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Taluka_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#Taluka_of_Form_Submission").change(function () {
+            $("#Stream_of_Form").empty();
+            if ($("#Taluka_of_Form_Submission").val() != "0") {
+                $("#Stream_of_Form").prop("disabled", false);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#College_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#Taluka_of_Form_Submission").val() == "0") {
+                $("#Stream_of_Form").prop("disabled", true);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#College_of_Form_Submission").prop("disabled", true);
+            }
+            $("#Medium_of_Form").empty();
+            $("#Medium_of_Form").append('<option value="0">-Select Medium-</option>');
+            $("#College_of_Form_Submission").empty();
+            $("#College_of_Form_Submission").append('<option value="0">-Select College-</option>');
+            document.getElementById("College_Index_No").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getStreamList")',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val()
+                },
+		beforeSend: function () {
+                        $("#frm_form17 :input").prop("disabled", true);
+                        $(".rounded").css("filter", "brightness(75%)");
+                        Showloader();
+                    },
+                    complete: function () {
+                        Hideloader();
+                        $("#frm_form17 :input").prop("disabled", false);
+                        $(".rounded").css("filter", "brightness(100%)");
+                    },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Stream_of_Form").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#Stream_of_Form").change(function () {
+            $("#Medium_of_Form").empty();
+            if ($("#Stream_of_Form").val() != "0") {
+                $("#Medium_of_Form").prop("disabled", false);
+                $("#College_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#Stream_of_Form").val() == "0") {
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#College_of_Form_Submission").prop("disabled", true);
+            }
+            $("#College_of_Form_Submission").empty();
+            $("#College_of_Form_Submission").append('<option value="0">-Select College-</option>');
+            document.getElementById("College_Index_No").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getMediumList")',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val(),
+                    stream: $("#Stream_of_Form").val()
+                },
+		beforeSend: function () {
+                        $("#frm_form17 :input").prop("disabled", true);
+                        $(".rounded").css("filter", "brightness(75%)");
+                        Showloader();
+                    },
+                complete: function () {
+                        Hideloader();
+                        $("#frm_form17 :input").prop("disabled", false);
+                        $(".rounded").css("filter", "brightness(100%)");
+                    },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Medium_of_Form").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#Medium_of_Form").change(function () {
+            $("#College_of_Form_Submission").empty();
+            if ($("#Medium_of_Form").val() != 0) {
+                $("#College_of_Form_Submission").prop("disabled", false);
+            }
+            else if ($("#Medium_of_Form").val() == 0) {
+                $("#College_of_Form_Submission").prop("disabled", true);
+            }
+            document.getElementById("College_Index_No").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getCollegeList")',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val(),
+                    stream: $("#Stream_of_Form").val(),
+                    medium: $("#Medium_of_Form").val()
+                },
+		beforeSend: function () {
+                        $("#frm_form17 :input").prop("disabled", true);
+                        $(".rounded").css("filter", "brightness(75%)");
+                        Showloader();
+                    },
+                    complete: function () {
+                        Hideloader();
+                        $("#frm_form17 :input").prop("disabled", false);
+                        $(".rounded").css("filter", "brightness(100%)");
+                    },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#College_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#College_of_Form_Submission").change(function () {
+            $("#College_Index_No").val($("#College_of_Form_Submission").val());
+            return false;
+        });
+        $("#ReadInstruction").click(function () {
+            if ($(this).is(":checked")) {
+                $("#Selected_Language").prop("disabled", false);
+            }
+            else {
+                $("#Selected_Language")[0].selectedIndex = 0;
+                $("#Selected_Language").prop("disabled", true);
+            }
+        });
+        $("#School_Leaving_Certificate_Yes_No").change(function () {
+            var item = $(this);
+            if (item.val() == "Yes") {
+                $("#OriginalLC").show();
+            }
+            else {
+                $("#OriginalLC").hide();
+            }
+        });
+        $("#FYJC_Leaving_Certificate_Yes_No").change(function () {
+            var item = $(this);
+            if (item.val() == "Yes") {
+                $("#JCLC").show();
+            }
+            else {
+                $("#JCLC").hide();
+            }
+        });
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                autoSize: true,
+                yearRange: "1960:2021"
+            });
+        });
+    });
+</script>
+<script>
+    function Confirm_Submit_HSCForm17(formData, Dialog, DialogDescription) {
+        Swal.fire({
+            title: Dialog,
+            text: DialogDescription,
+            showCancelButton: true,
+            confirmButtonColor: '#30d633',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: '../Home/HSCForm17',
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (Data) {
+                        if (Data.Result) {
+                            Swal.fire({
+                                title: 'Please Wait',
+                                text: 'Redirecting to Payment...',
+                                showConfirmButton: false,
+                                allowOutsideClick: false,
+                                allowEscapeKey: false
+                            })
+                            window.location.replace(Data.RedirectURL);
+                        }
+                        else {
+                            Error_Alert(Data.Message);
+                        }
+                    },
+                    error: function (e1, e2, e3) {
+                        Error_Alert(Data.Message);
+                    }
+                })
+            }
+        })
+    }
+</script>

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "RePrintApplication";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="Reprint">
+    <div class="row" style="padding:10px;">
+        <div class="form-group text-center col-md-offset-3 col-md-2">
+            <label style="padding-top:5px;">Select Standard:</label><span style="color:Red">*</span>
+        </div>
+        <div class="form-group col-md-3 col">
+            <select id="std" name="std" class="form-control">
+                <option value="0" selected>-- Select Standard --</option>
+                <option value="SSC">SSC</option>
+                <option value="HSC">HSC</option>
+            </select>
+        </div>
+    </div>
+    <div class="row" style="padding:10px;">
+        <div class="form-group text-center col-md-offset-3 col-md-2">
+            <label style="padding-top:5px;">Email ID:</label><span style="color:Red">*</span>
+        </div>
+        <div class="form-group col-md-3 col">
+            <input type="text" name="Email" id="Email" class="form-control" maxlength="100" placeholder="example@example.com" required />
+        </div>
+    </div>
+    <div class="row" style="padding:10px;">
+        <div class="form-group text-center col-md-offset-3 col-md-2">
+            <label style="padding-top:5px;">Mobile No:</label><span style="color:Red">*</span>
+        </div>
+        <div class="form-group col-md-3 col">
+            <input type="text" name="Mobile" id="Mobile" class="form-control" maxlength="10" required />
+        </div>
+    </div>
+    <div class="row form-group col-md-offset-5" style="padding:10px;">
+        <input type="button" value="submit" class="btn btn-primary" name="btnSubmit" id="btnSubmit" />
+    </div>
+    <div class="row form-group col-md-offset-5" style="padding:10px;">
+        <span id="downloadlink"></span>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSubmit").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RePrintApplication")',
+                dataType: 'json',
+                data: {
+                    std: $("#std").val(),
+                    email: $("#Email").val(),
+                    mobile: $("#Mobile").val(),
+                },
+                beforeSend: function () {
+                    $("#Reprint :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#Reprint :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {                    
+                    if (Data.Result) {
+                        $("#btnSubmit").hide();
+                        $("#downloadlink").empty();
+                        $("#downloadlink").append('<a class = "btn btn-info" href="' + Data.file + '">Download Application </a>');
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        });
+
+        $('li').removeClass('active');
+        $('#RePrint').addClass(' active');
+    });
+</script>

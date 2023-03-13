@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="sms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile_No" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="templateid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="smsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="smsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="unicodesms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile_No" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="templateid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="unicodesmsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="unicodesmsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="smsSoapIn">
+    <wsdl:part name="parameters" element="tns:sms" />
+  </wsdl:message>
+  <wsdl:message name="smsSoapOut">
+    <wsdl:part name="parameters" element="tns:smsResponse" />
+  </wsdl:message>
+  <wsdl:message name="unicodesmsSoapIn">
+    <wsdl:part name="parameters" element="tns:unicodesms" />
+  </wsdl:message>
+  <wsdl:message name="unicodesmsSoapOut">
+    <wsdl:part name="parameters" element="tns:unicodesmsResponse" />
+  </wsdl:message>
+  <wsdl:message name="smsHttpGetIn">
+    <wsdl:part name="Mobile_No" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+    <wsdl:part name="templateid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="smsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="unicodesmsHttpGetIn">
+    <wsdl:part name="Mobile_No" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+    <wsdl:part name="templateid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="unicodesmsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="smsHttpPostIn">
+    <wsdl:part name="Mobile_No" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+    <wsdl:part name="templateid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="smsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="unicodesmsHttpPostIn">
+    <wsdl:part name="Mobile_No" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+    <wsdl:part name="templateid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="unicodesmsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="WebService_smsSoap">
+    <wsdl:operation name="sms">
+      <wsdl:input message="tns:smsSoapIn" />
+      <wsdl:output message="tns:smsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="unicodesms">
+      <wsdl:input message="tns:unicodesmsSoapIn" />
+      <wsdl:output message="tns:unicodesmsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService_smsHttpGet">
+    <wsdl:operation name="sms">
+      <wsdl:input message="tns:smsHttpGetIn" />
+      <wsdl:output message="tns:smsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="unicodesms">
+      <wsdl:input message="tns:unicodesmsHttpGetIn" />
+      <wsdl:output message="tns:unicodesmsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService_smsHttpPost">
+    <wsdl:operation name="sms">
+      <wsdl:input message="tns:smsHttpPostIn" />
+      <wsdl:output message="tns:smsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="unicodesms">
+      <wsdl:input message="tns:unicodesmsHttpPostIn" />
+      <wsdl:output message="tns:unicodesmsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService_smsSoap" type="tns:WebService_smsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sms">
+      <soap:operation soapAction="http://tempuri.org/sms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unicodesms">
+      <soap:operation soapAction="http://tempuri.org/unicodesms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService_smsSoap12" type="tns:WebService_smsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sms">
+      <soap12:operation soapAction="http://tempuri.org/sms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unicodesms">
+      <soap12:operation soapAction="http://tempuri.org/unicodesms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService_smsHttpGet" type="tns:WebService_smsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="sms">
+      <http:operation location="/sms" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unicodesms">
+      <http:operation location="/unicodesms" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService_smsHttpPost" type="tns:WebService_smsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="sms">
+      <http:operation location="/sms" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unicodesms">
+      <http:operation location="/unicodesms" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService_sms">
+    <wsdl:port name="WebService_smsSoap" binding="tns:WebService_smsSoap">
+      <soap:address location="http://sms.mh-hsc.ac.in/webservice_sms.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService_smsSoap12" binding="tns:WebService_smsSoap12">
+      <soap12:address location="http://sms.mh-hsc.ac.in/webservice_sms.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService_smsHttpGet" binding="tns:WebService_smsHttpGet">
+      <http:address location="http://sms.mh-hsc.ac.in/webservice_sms.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService_smsHttpPost" binding="tns:WebService_smsHttpPost">
+      <http:address location="http://sms.mh-hsc.ac.in/webservice_sms.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

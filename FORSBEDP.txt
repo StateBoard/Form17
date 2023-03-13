@@ -1,0 +1,19 @@
+Division	Password
+
+Pune 		Pune@2022
+Nagpur		Nagpur@2022
+Aurangabad	Aurangabad@2022
+Mumbai		Mumbai@2022
+Kolhapur	Kolhapur@2022			
+Amravati	Amravati@2022
+Nashik		Nashik@2022
+Latur		Latur@2022
+Kokan		Kokan@2022
+
+
+
+
+
+
+
+

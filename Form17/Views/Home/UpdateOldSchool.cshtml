@@ -1,0 +1,430 @@
+﻿@model Form17.Models.SSC_Form17_Model
+@{
+    ViewBag.Title = "UpdateOldSchool";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="frmupdateschool">
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div style="text-align:center">
+            <label>- Update old center of form submission -</label>
+        </div>
+        <div class="row" style="padding:15px;  border-bottom: double;">
+            <div class="col-md-3">
+                <label>Enter Form No :</label>
+                <input type="text" id="formno" name="formno" class="form-control" maxlength="7"/>
+            </div>
+            <div class="col-md-3">
+                <label>Enter Mobile No :</label>
+                <input type="text" id="mobileno" name="mobileno" class="form-control" maxlength="10"/>
+            </div>
+            <div class="col-md-3">
+                <label>Enter Email ID :</label>
+                <input type="text" id="email" name="email" class="form-control" maxlength="50"/>
+            </div>
+            <div class="col-md-3" style="padding-top:25px">
+                <input type="button" name="btnSearch" value="Submit" id="btnSearch" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="row step2" style="padding:15px;  border-bottom: double; display:none">
+            <div class="col-sm-12">
+                <label>Your old center of form submission - </label><label id="oldschoolindex"></label>&nbsp;&nbsp;<label id="oldschoolname"></label>
+            </div>
+        </div>
+        <div class="row step2" style="padding:15px; display:none">
+            <div class="col-9">
+                <label for="center">&nbsp;&nbsp;&nbsp;Select new center where you want to submit application.</label>
+            </div>
+        </div>
+        <div class="row step2" style="padding:15px; display:none">
+            <div class="form-group col-md-3">
+                <label for="District_of_Form_Submission">(1)District:</label><span style="color: red">*</span>
+                @Html.DropDownListFor(model => model.District_of_Form_Submission, ViewBag.DistrictList as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Taluka_of_Form_Submission">(2)Taluka:</label><span style="color: red;">*</span>
+                @Html.DropDownListFor(model => model.Taluka_of_Form_Submission, new SelectList(string.Empty, "Value", "Text"), "-Select Taluka-", new { @class = "form-control", @disabled = "disable" })
+            </div>            
+            <div class="form-group col-md-3">
+                <label for="Medium_of_Form">(3)Medium:</label><span style="color: red">*</span>
+                @Html.DropDownListFor(model => model.Medium_of_Form, new SelectList(string.Empty, "Value", "Text"), "-Select Medium-", new { @class = "form-control", @disabled = "disable" })
+            </div>
+        </div>
+        <div class="row step2" style="padding: 15px; display:none">
+            <div class="form-group col-md-9">
+                <label for="College_of_Form_Submission">(4)Select School:</label><span style="color: red">*</span>
+                @Html.DropDownListFor(model => model.School_of_Form_Submission, new SelectList(string.Empty, "Value", "Text"), "-Select College-", new { @class = "form-control", @disabled = "disable" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Index_No_of_School">School Index :</label>
+                <input name="Index_No_of_School" type="text" readonly="readonly" id="Index_No_of_School" class="form-control" />
+            </div>
+        </div>
+        <div class="row step2" style="padding-top:5px;text-align:center;  border-bottom: double; display:none">
+            <div class="form-group col-md-12">
+                <input type="button" name="btnSubmit" value="Submit" id="btnSubmit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $('#btnSearch').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("IsAlreadySchoolUpdated")',
+                dataType: 'json',
+                data: {
+                    FormNo: $("#formno").val(),
+                    mobileno: $("#mobileno").val(),
+                    email: $("#email").val()
+                },
+                beforeSend: function () {
+                    $("#frmupdateschool :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frmupdateschool :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+                        Error_Alert(Data.Message);
+                    }
+                    else {
+                        console.log(Data.data);
+                        $("#oldschoolindex").html(Data.index);
+                        $("#oldschoolname").html(Data.centername);
+                        $('.step2').show();
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    Error_Alert(Data.Message);
+                }
+            });
+            return false;
+        });
+
+        $('#btnSubmit').click(function () {
+            var formData = {
+                FormNo: $('#formno').val(),
+                District: $('#District_of_Form_Submission').val(),
+                Taluka: $('#Taluka_of_Form_Submission').val(),
+                Medium: $('#Medium_of_Form').val(),
+                Old_School: $('#oldschoolindex').text(),
+                Updated_School: $('#School_of_Form_Submission').val(),
+                Email_ID: $('#email').val()
+            };
+            Confirm_Submit_UpdateCollege(formData, "Are you sure want to submit ?");
+        })
+
+        $("#District_of_Form_Submission").change(function () {
+            $("#Taluka_of_Form_Submission").empty();
+            if ($("#District_of_Form_Submission").val() != "0") {
+                $("#Taluka_of_Form_Submission").prop("disabled", false);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#District_of_Form_Submission").val() == 0) {
+                $("#Taluka_of_Form_Submission").prop("disabled", true);
+                $("#Medium_of_Form").prop("disabled", true);
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            $("#Medium_of_Form").empty();
+            $("#Medium_of_Form").append('<option value="0">-Select Medium-</option>');
+            $("#School_of_Form_Submission").empty();
+            $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getTalukaList")',
+                dataType: 'json',
+                data: { distCode: $("#District_of_Form_Submission").val() },
+                beforeSend: function () {
+                    $("#frmupdateschool :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frmupdateschool :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Taluka_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#Taluka_of_Form_Submission").change(function () {
+            $("#Medium_of_Form").empty();
+            if ($("#Taluka_of_Form_Submission").val() != "0") {
+                $("#Medium_of_Form").prop("disabled", false)
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            else if ($("#Taluka_of_Form_Submission").val() == "0") {
+                $("#Medium_of_Form").prop("disabled", true)
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            $("#School_of_Form_Submission").empty();
+            $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getSSCMediumList")',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val()
+                },
+                beforeSend: function () {
+                    $("#frmupdateschool :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frmupdateschool :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Medium_of_Form").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#Medium_of_Form").change(function () {
+            $("#School_of_Form_Submission").empty();
+            if ($("#Medium_of_Form").val() != "0") {
+                $("#School_of_Form_Submission").prop("disabled", false);
+            }
+            else if ($("#Medium_of_Form").val() == "0") {
+                $("#School_of_Form_Submission").prop("disabled", true);
+            }
+            document.getElementById("Index_No_of_School").value = "";
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getSchoolList")',
+                dataType: 'json',
+                data: {
+                    distCode: $("#District_of_Form_Submission").val(),
+                    talCode: $("#Taluka_of_Form_Submission").val(),
+                    medium: $("#Medium_of_Form").val()
+                },
+                beforeSend: function () {
+                    $("#frmupdateschool :input").prop("disabled", true);
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $("#frmupdateschool :input").prop("disabled", false);
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#School_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#School_of_Form_Submission").change(function () {
+            $("#Index_No_of_School").val($("#School_of_Form_Submission").val());
+            return false;
+        });
+    })
+    function District_Change() {
+        $("#Taluka_of_Form_Submission").empty();
+        if ($("#District_of_Form_Submission").val() != "0") {
+            $("#Taluka_of_Form_Submission").prop("disabled", false);
+            $("#Medium_of_Form").prop("disabled", true);
+            $("#School_of_Form_Submission").prop("disabled", true);
+        }
+        else if ($("#District_of_Form_Submission").val() == 0) {
+            $("#Taluka_of_Form_Submission").prop("disabled", true);
+            $("#Medium_of_Form").prop("disabled", true);
+            $("#School_of_Form_Submission").prop("disabled", true);
+        }
+        $("#Medium_of_Form").empty();
+        $("#Medium_of_Form").append('<option value="0">-Select Medium-</option>');
+        $("#School_of_Form_Submission").empty();
+        $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+        document.getElementById("Index_No_of_School").value = "";
+        $.ajax({
+            type: 'POST',
+            url: '../Home/getTalukaList',
+            dataType: 'json',
+            data: { distCode: $("#District_of_Form_Submission").val() },
+            beforeSend: function () {
+                $("#frm_form17 :input").prop("disabled", true);
+                $(".rounded").css("filter", "brightness(75%)");
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+                $("#frm_form17 :input").prop("disabled", false);
+                $(".rounded").css("filter", "brightness(100%)");
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#Taluka_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+                $("#Taluka_of_Form_Submission").val($('#hf_taluka').val());
+                Taluka_Change();
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+        return false;
+    }
+
+    function Taluka_Change() {
+        $("#Medium_of_Form").empty();
+        if ($("#Taluka_of_Form_Submission").val() != "0") {
+            $("#Medium_of_Form").prop("disabled", false)
+            $("#School_of_Form_Submission").prop("disabled", true);
+        }
+        else if ($("#Taluka_of_Form_Submission").val() == "0") {
+            $("#Medium_of_Form").prop("disabled", true)
+            $("#School_of_Form_Submission").prop("disabled", true);
+        }
+        $("#School_of_Form_Submission").empty();
+        $("#School_of_Form_Submission").append('<option value="0">-Select School-</option>');
+        document.getElementById("Index_No_of_School").value = "";
+        $.ajax({
+            type: 'POST',
+            url: '../Home/getSSCMediumList',
+            dataType: 'json',
+            data: {
+                distCode: $("#District_of_Form_Submission").val(),
+                talCode: $("#Taluka_of_Form_Submission").val()
+            },
+            beforeSend: function () {
+                $("#frm_form17 :input").prop("disabled", true);
+                $(".rounded").css("filter", "brightness(75%)");
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+                $("#frm_form17 :input").prop("disabled", false);
+                $(".rounded").css("filter", "brightness(100%)");
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#Medium_of_Form").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+                $("#Medium_of_Form").val($('#hf_medium').val());
+                Medium_Change();
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+        return false;
+    }
+
+    function Medium_Change() {
+        $("#School_of_Form_Submission").empty();
+        if ($("#Medium_of_Form").val() != "0") {
+            $("#School_of_Form_Submission").prop("disabled", false);
+        }
+        else if ($("#Medium_of_Form").val() == "0") {
+            $("#School_of_Form_Submission").prop("disabled", true);
+        }
+        document.getElementById("Index_No_of_School").value = "";
+        $.ajax({
+            type: 'POST',
+            url: '../Home/getSchoolListForDivision',
+            dataType: 'json',
+            data: {
+                distCode: $("#District_of_Form_Submission").val(),
+                talCode: $("#Taluka_of_Form_Submission").val(),
+                medium: $("#Medium_of_Form").val()
+            },
+            beforeSend: function () {
+                $("#frm_form17 :input").prop("disabled", true);
+                $(".rounded").css("filter", "brightness(75%)");
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+                $("#frm_form17 :input").prop("disabled", false);
+                $(".rounded").css("filter", "brightness(100%)");
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#School_of_Form_Submission").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+                $("#School_of_Form_Submission").val($('#hf_school').val());
+                $("#Index_No_of_School").val($('#hf_school').val());
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+        return false;
+    }
+    function Confirm_Submit_UpdateCollege(formData, Dialog) {
+        Swal.fire({
+            title: Dialog,
+            text: 'Once center is changed, cannot be edited later.',
+            showCancelButton: true,
+            confirmButtonColor: '#30d633',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: '../Home/UpdateOldSchool',
+                    type: "POST",
+                    data: {
+                        FormNo: formData.FormNo,
+                        District: formData.District,
+                        Taluka: formData.Taluka,
+                        Medium: formData.Medium,
+                        Old_School: formData.Old_School,
+                        Updated_School: formData.Updated_School,
+                        Email_ID: formData.Email_ID
+                    },
+                    success: function (Data) {
+                        if (Data.Result) {
+                            Success_Alert(Data.Message);
+                        }
+                        else {
+                            Error_Alert(Data.Message);
+                        }
+                    },
+                    error: function (e1, e2, e3) {
+                        Error_Alert(Data.Message);
+                    }
+                })
+            }
+        })
+    }
+</script>
+
